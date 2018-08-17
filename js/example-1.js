@@ -1,6 +1,6 @@
-const dlocalInstanceExample1 = dlocal('efba0f53-252d-4da2-806c-3cb694a1e2d8');
+const dlocalInstance = dlocal('efba0f53-252d-4da2-806c-3cb694a1e2d8');
 
-const fields = dlocalInstanceExample1.fields({
+const fields = dlocalInstance.fields({
     fonts: [{
         cssSrc: 'https://rsms.me/inter/inter-ui.css'
     }],
@@ -25,16 +25,24 @@ const cardFieldExample1 = fields.create('card', {
     }
 });
 
+cardFieldExample1.on('autofilled', function (event) {
+    if (event.autofilled) {
+        document.getElementById('example-1-card').classList.add("autofilled");
+    } else {
+        document.getElementById('example-1-card').classList.remove("autofilled");
+    }
+})
+
 document.getElementById('fields-form-example-1').onsubmit = function (e) {
     e.preventDefault();
-    dlocalInstanceExample1.createToken(cardFieldExample1, {
+    dlocalInstance.createToken(cardFieldExample1, {
         name: "Test"
     }).then((result) => {
         var example = document.querySelector(".example-1");
         example.querySelector(".token").innerText = result.token;
         example.classList.add("submitted");
     }).catch((result) => {
-        showFieldsError(result.error);
+        //showFieldsError(result.error);
     });
 
 }

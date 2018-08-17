@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="323px" height="168px" viewBox="0 0 323 168" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>security_code-livetext-nocopy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="65" cy="65" r="65"></circle>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-4" y="-4" width="138" height="138">
+            <rect x="-4" y="-4" width="138" height="138" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="security_code-livetext-nocopy">
+            <rect id="Rectangle" fill="#D8D8D8" x="0" y="0" width="267" height="168" rx="12"></rect>
+            <rect id="Rectangle-4-Copy" fill="#CFCFCF" x="18" y="57" width="183" height="38"></rect>
+            <rect id="Rectangle-2" fill="#666666" x="0" y="31" width="267" height="26"></rect>
+            <g id="234-567" transform="translate(189.000000, 19.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask">
+                    <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use stroke="#979797" mask="url(#mask-3)" stroke-width="8" xlink:href="#path-1"></use>
+                </g>
+                <rect id="Rectangle-4" fill="#CFCFCF" mask="url(#mask-2)" x="-18" y="36" width="51" height="58"></rect>
+                <rect id="Rectangle-3" fill="#FFFFFF" mask="url(#mask-2)" x="33" y="44" width="71" height="43"></rect>
+                <text mask="url(#mask-2)" font-family="OpenSans, Open Sans" font-size="30" font-weight="normal" letter-spacing="2.14285707" fill="#333333">
+                    <tspan x="-29" y="77">234 56</tspan>
+                    <tspan x="77.4167128" y="77" letter-spacing="1.83673465">7</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

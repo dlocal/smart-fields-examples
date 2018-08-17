@@ -609,3 +609,7 @@ footer {
     cursor: default;
     color: #7F17AF;
 }
+
+.autofilled {
+    background-color: #fefde5;
+}
