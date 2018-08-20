@@ -122,11 +122,6 @@ const cvvField = fields.create('cvv', {
 
 
 
-const today = new Date();
-const month = today.getMonth() + 1
-const monthStr = month <= 9 ? "0" + month : month.toString();
-const year = (today.getFullYear() + 2).toString().substring(2);
-
 const expirationField = fields.create('expiration', {
     style: {
         base: {

@@ -8,6 +8,11 @@ const fields = dlocalInstance.fields({
     country: 'BR'
 });
 
+const today = new Date();
+const month = today.getMonth() + 1
+const monthStr = month <= 9 ? "0" + month : month.toString();
+const year = (today.getFullYear() + 2).toString().substring(2);
+
 function triggerBrowserValidation(form) {
     // fake a user submit event.
     var submit = document.createElement('input');
