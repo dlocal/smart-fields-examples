@@ -13,24 +13,23 @@ Common code for handling errors and form submission lives [here](js/index.js).
 
 Example 1 is the simpliest example that shows a form that uses the `card` Smart-Field.
 
-<!-- ## Example 2
+## Example 2
 
 - [JavaScript](js/example-2.js)
 - [CSS](css/example-2.css)
 
-Example 2 shows a "floaty-label" form that uses individual `cardNumber`, `cardExpiry`, and `cardCvc` Elements with a custom web font.
-
-The form also collects address (and thus postal code) outside of the payment form. It passes the postal code to Stripe on tokenization.
+Example 2 shows a form that collects more data and sends it when it creates the token.
 
 ## Example 3
 
 - [JavaScript](js/example-3.js)
 - [CSS](css/example-3.css)
 
-Example 3 shows a form that uses individual `cardNumber`, `cardExpiry`, and `cardCvc` Elements with a custom web font.
+Example 3 shows a form that uses individual `pan`, `expiration`, and `cvv` Elements with a custom web font and custom placeholders.
 
-The form also collects postal code outside of the payment form.
+The form also collects other data outside of the payment form.
 
+<!--
 ## Example 4
 
 - [JavaScript](js/example-4.js)
