@@ -391,3 +391,5 @@ function loader(show) {
     document.getElementById("customContainer").style.opacity = show ? 0 : 1;
     document.getElementById("panOverlay").style.visibility = show ? "hidden" : "visible";
 }
+
+//registerClearBtn("example-6", [panField, cvvField, expirationField])
