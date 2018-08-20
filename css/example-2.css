@@ -1,0 +1,163 @@
+.example.example-2 {
+    background-color: white;
+}
+
+.example.example-2 * {
+    font-family: Roboto, Open Sans, Segoe UI, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.example.example-2 fieldset {
+    margin: 0 15px 20px;
+    padding: 0;
+    border-style: none;
+    background-color: #e8f7ee;
+    box-shadow: 0 6px 9px #c1efd5, 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #b193c100;
+    border-radius: 4px;
+}
+
+.example.example-2 .field {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.example.example-2 .field+.field {
+    border-top: 1px solid #21a35b;
+}
+
+.example.example-2 .field .half {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    width: calc(50% - 13px);
+    vertical-align: top;
+    margin-right: 3.5px;
+}
+
+.example.example-2 .field .half input {
+    width: calc(100% - 70px);
+}
+
+.example.example-2 .field .half+.half {
+    margin-left: 3.5px;
+    margin-right: 0px;
+}
+
+.field.container {
+    border-radius: 4px;
+    padding: 3px;
+}
+
+#example-2-card {
+    width: calc(100% - 15px);
+}
+
+.example.example-2 label {
+    width: 15%;
+    min-width: 70px;
+    padding: 11px 0;
+    color: #13ce66;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.example.example-2 input,
+.example.example-2 button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+}
+
+.example.example-2 input:-webkit-autofill {
+    -webkit-text-fill-color: #f1d444;
+    transition: background-color 100000000s;
+    -webkit-animation: 1ms void-animation-out;
+}
+
+.example.example-2 .DlocalField--webkit-autofill {
+    background: transparent !important;
+}
+
+.example.example-2 .DlocalField {
+    width: 100%;
+    padding: 11px 15px 11px 0;
+}
+
+.example.example-2 input {
+    width: 100%;
+    padding: 11px 15px 11px 0;
+    color: #666;
+    background-color: transparent;
+    -webkit-animation: 1ms void-animation-out;
+}
+
+.example.example-2 input::-webkit-input-placeholder {
+    color: #21a35b;
+}
+
+.example.example-2 input::-moz-placeholder {
+    color: #21a35b;
+}
+
+.example.example-2 input:-ms-input-placeholder {
+    color: #21a35b;
+}
+
+.example.example-2 button {
+    display: block;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 40px 15px 0;
+    background-color: #21a35b;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #13ce66;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.example.example-2 button:active {
+    background-color: #21a35b;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #e298d8;
+}
+
+.example.example-2 .error svg .base {
+    fill: #e25950;
+}
+
+.example.example-2 .error svg .glyph {
+    fill: #f6f9fc;
+}
+
+.example.example-2 .error .message {
+    color: #e25950;
+}
+
+.example.example-2 .success .icon .border {
+    stroke: #21a35b;
+}
+
+.example.example-2 .success .icon .checkmark {
+    stroke: #13ce66;
+}
+
+.example.example-2 .success .title {
+    color: #13ce66;
+}
+
+.example.example-2 .success .message {
+    color: #13ce66;
+}
+
+.example.example-2 .success .reset path {
+    fill: #13ce66;
+}
