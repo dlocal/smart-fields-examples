@@ -71,11 +71,11 @@
     color: #f0810f;
 }
 
-.example.example-4 #installments {
+.example.example-4 .installments {
     width: 100%;
 }
 
-.example.example-4 #installments:disabled {
+.example.example-4 .installments:disabled {
     color: #f0810f;
 }
 

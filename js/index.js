@@ -46,6 +46,12 @@ function registerClearBtn(exampleName, fields) {
         error.classList.remove('visible');
 
         example.classList.remove('submitted');
+
+        var installmentsInput = form.querySelector('.installments');
+        installmentsInput.disabled = true;
+        installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
+
+
     });
 }
 

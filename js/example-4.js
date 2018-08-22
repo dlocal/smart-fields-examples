@@ -1,4 +1,5 @@
 var example = document.querySelector(".example-4");
+var form = example.querySelector('form');
 
 const panExample4 = fields.create('pan', {
     style: {
@@ -13,6 +14,12 @@ const panExample4 = fields.create('pan', {
                 color: "#f0810f"
             },
             iconColor: "#f0810f"
+        },
+        focus: {
+            color: "#424770",
+            '::placeholder': {
+                color: "#cfd7df"
+            }
         }
     }
 });
@@ -31,6 +38,12 @@ const expirationExample4 = fields.create('expiration', {
             '::placeholder': {
                 color: "#f0810f"
             }
+        },
+        focus: {
+            color: "#424770",
+            '::placeholder': {
+                color: "#cfd7df"
+            }
         }
     }
 });
@@ -46,6 +59,12 @@ const cvvExample4 = fields.create('cvv', {
             color: "white",
             '::placeholder': {
                 color: "#f0810f"
+            }
+        },
+        focus: {
+            color: "#424770",
+            '::placeholder': {
+                color: "#cfd7df"
             }
         }
     }
@@ -66,6 +85,14 @@ panExample4.on('ready', function (event) {
     }
 });
 
+panExample4.on('focus', function (event) {
+    document.getElementById('example-4-pan').classList.add("focus");
+})
+
+panExample4.on('blur', function (event) {
+    document.getElementById('example-4-pan').classList.remove("focus");
+})
+
 let isExpirationExample4Completed = false;
 expirationExample4.on('complete', function (event) {
     isExpirationExample4Completed = event.complete;
@@ -80,6 +107,14 @@ expirationExample4.on('ready', function (event) {
     }
 });
 
+expirationExample4.on('focus', function (event) {
+    document.getElementById('example-4-expiration').classList.add("focus");
+})
+
+expirationExample4.on('blur', function (event) {
+    document.getElementById('example-4-expiration').classList.remove("focus");
+})
+
 let isCvvExample4Completed = false;
 cvvExample4.on('complete', function (event) {
     isCvvExample4Completed = event.complete;
@@ -93,10 +128,18 @@ cvvExample4.on('ready', function (event) {
     }
 });
 
+cvvExample4.on('focus', function (event) {
+    document.getElementById('example-4-cvv').classList.add("focus");
+})
+
+cvvExample4.on('blur', function (event) {
+    document.getElementById('example-4-cvv').classList.remove("focus");
+})
+
 
 document.getElementById('fields-form-example-4').onsubmit = function (e) {
     e.preventDefault();
-    var form = example.querySelector('form');
+
     var error = form.querySelector('.error');
     var errorMessage = error.querySelector('.message');
     // Trigger HTML5 validation UI on the form if any of the inputs fail
@@ -154,7 +197,7 @@ panExample4.on('brand', function (event) {
 
         dlocalInstance.createInstallmentsPlan(panExample4, 500, "BRL")
             .then((result) => {
-                var installmentsSelect = document.getElementById('installments');
+                var installmentsSelect = form.querySelector('.installments');
                 buildInstallments(installmentsSelect, result.installments);
             }).catch((result) => {
                 console.error(result);
