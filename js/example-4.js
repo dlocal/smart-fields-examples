@@ -1,7 +1,7 @@
 var example = document.querySelector(".example-4");
 var form = example.querySelector('form');
 
-const panExample4 = fields.create('pan', {
+const cardExample4 = fields.create('card', {
     style: {
         base: {
             fontSize: "16px",
@@ -13,12 +13,12 @@ const panExample4 = fields.create('pan', {
             '::placeholder': {
                 color: "#f0810f"
             },
-            iconColor: "#f0810f"
+            iconColor: "#904d09"
         },
         focus: {
             color: "#424770",
             '::placeholder': {
-                color: "#cfd7df"
+                color: "#c0670c"
             }
         }
     }
@@ -26,114 +26,32 @@ const panExample4 = fields.create('pan', {
 
 
 
-const expirationExample4 = fields.create('expiration', {
-    style: {
-        base: {
-            fontSize: "16px",
-            fontFamily: "Quicksand, Open Sans, Segoe UI, sans-serif",
-            lineHeight: '18px',
-            fontSmoothing: 'antialiased',
-            fontWeight: '500',
-            color: "white",
-            '::placeholder': {
-                color: "#f0810f"
-            }
-        },
-        focus: {
-            color: "#424770",
-            '::placeholder': {
-                color: "#cfd7df"
-            }
-        }
-    }
-});
 
-const cvvExample4 = fields.create('cvv', {
-    style: {
-        base: {
-            fontSize: "16px",
-            fontFamily: "Quicksand, Open Sans, Segoe UI, sans-serif",
-            lineHeight: '18px',
-            fontSmoothing: 'antialiased',
-            fontWeight: '500',
-            color: "white",
-            '::placeholder': {
-                color: "#f0810f"
-            }
-        },
-        focus: {
-            color: "#424770",
-            '::placeholder': {
-                color: "#cfd7df"
-            }
-        }
-    }
-});
-
-
-let isPanExample4Completed = false;
-panExample4.on('complete', function (event) {
-    isPanExample4Completed = event.complete;
+let iscardExample4Completed = false;
+cardExample4.on('complete', function (event) {
+    iscardExample4Completed = event.complete;
     expirationExample4.focus()
 })
 
-let isPanExample4Ready = false;
-panExample4.on('ready', function (event) {
-    isPanExample4Ready = true;
-    if (isPanExample4Ready && isExpirationExample4Ready && isCVVExample4Ready) {
-        example.classList.remove('submitting');
-    }
+cardExample4.on('ready', function (event) {
+    example.classList.remove('submitting');
+
 });
 
-panExample4.on('focus', function (event) {
-    document.getElementById('example-4-pan').classList.add("focus");
+cardExample4.on('focus', function (event) {
+    document.getElementById('example-4-card').classList.add("focus");
 })
 
-panExample4.on('blur', function (event) {
-    document.getElementById('example-4-pan').classList.remove("focus");
+cardExample4.on('blur', function (event) {
+    document.getElementById('example-4-card').classList.remove("focus");
 })
 
-let isExpirationExample4Completed = false;
-expirationExample4.on('complete', function (event) {
-    isExpirationExample4Completed = event.complete;
-    cvvExample4.focus();
-})
-
-let isExpirationExample4Ready = false;
-expirationExample4.on('ready', function (event) {
-    isExpirationExample4Ready = true;
-    if (isPanExample4Ready && isExpirationExample4Ready && isCVVExample4Ready) {
-        example.classList.remove('submitting');
+cardExample4.on('autofilled', function (event) {
+    if (event.autofilled) {
+        document.getElementById('example-4-card').classList.add("autofilled");
+    } else {
+        document.getElementById('example-4-card').classList.remove("autofilled");
     }
-});
-
-expirationExample4.on('focus', function (event) {
-    document.getElementById('example-4-expiration').classList.add("focus");
-})
-
-expirationExample4.on('blur', function (event) {
-    document.getElementById('example-4-expiration').classList.remove("focus");
-})
-
-let isCvvExample4Completed = false;
-cvvExample4.on('complete', function (event) {
-    isCvvExample4Completed = event.complete;
-})
-
-let isCVVExample4Ready = false;
-cvvExample4.on('ready', function (event) {
-    isCVVExample4Ready = true;
-    if (isPanExample4Ready && isExpirationExample4Ready && isCVVExample4Ready) {
-        example.classList.remove('submitting');
-    }
-});
-
-cvvExample4.on('focus', function (event) {
-    document.getElementById('example-4-cvv').classList.add("focus");
-})
-
-cvvExample4.on('blur', function (event) {
-    document.getElementById('example-4-cvv').classList.remove("focus");
 })
 
 
@@ -157,7 +75,7 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
         triggerBrowserValidation(form);
         return;
     }
-    if (!isPanExample4Completed || !isExpirationExample4Completed || !isCvvExample4Completed) {
+    if (!iscardExample4Completed) {
         if (!errorMessage.innerText) {
             error.classList.add('visible');
             errorMessage.innerText = 'Complete credit card data.';
@@ -167,7 +85,7 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
     }
     // Show a loading screen...
     example.classList.add('submitting');
-    dlocalInstance.createToken(cvvExample4, {
+    dlocalInstance.createToken(cardExample4, {
         name: document.getElementById('example-4-name').value
     }).then((result) => {
         error.classList.remove('visible');
@@ -182,20 +100,18 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
     });
 
 }
-registerClearBtn("example-4", [panExample4, expirationExample4, cvvExample4])
-registerEvents("example-4", [panExample4, expirationExample4, cvvExample4])
+registerClearBtn("example-4", [cardExample4])
+registerEvents("example-4", [cardExample4])
 
-panExample4.mount(document.getElementById('example-4-pan'));
-expirationExample4.mount(document.getElementById('example-4-expiration'));
-cvvExample4.mount(document.getElementById('example-4-cvv'));
+cardExample4.mount(document.getElementById('example-4-card'));
 
 let actualBrand = null;
-panExample4.on('brand', function (event) {
+cardExample4.on('brand', function (event) {
 
     if (event.brand && actualBrand !== event.brand) {
         actualBrand = event.brand;
 
-        dlocalInstance.createInstallmentsPlan(panExample4, 500, "BRL")
+        dlocalInstance.createInstallmentsPlan(cardExample4, 500, "BRL")
             .then((result) => {
                 var installmentsSelect = form.querySelector('.installments');
                 buildInstallments(installmentsSelect, result.installments);
