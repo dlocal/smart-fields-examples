@@ -1,0 +1,176 @@
+.example.example-4 {
+    background-color: #011a27;
+}
+
+.example.example-4 * {
+    font-family: Quicksand, Open Sans, Segoe UI, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.example.example-4 .fieldset {
+    margin: 0 15px 30px;
+    padding: 0;
+    border-style: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.example.example-4 .field {
+    padding: 10px 20px 11px;
+    background-color: #063852;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.example.example-4 .field.half-width {
+    width: calc(50% - (5px / 2));
+}
+
+.example.example-4 .field.third-width {
+    width: calc(33% - (5px / 3));
+}
+
+.example.example-4 .field+.field {
+    margin-top: 6px;
+}
+
+.example.example-4 .field.focus,
+.example.example-4 .field:focus {
+    color: #424770;
+    background-color: #f6f9fc;
+}
+
+.example.example-4 .field.invalid {
+    background-color: #fa755a;
+}
+
+.example.example-4 .field.invalid.focus {
+    background-color: #f6f9fc;
+}
+
+.example.example-4 .select-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.example.example-4 .select-wrapper span {
+    width: 10px;
+    height: 10px;
+    bottom: 25px;
+    font-size: 10px;
+    right: 10px;
+    line-height: 33px;
+    position: absolute;
+    text-align: center;
+    z-index: 2;
+    color: #f0810f;
+}
+
+.example.example-4 #installments {
+    width: 100%;
+}
+
+.example.example-4 #installments:disabled {
+    color: #f0810f;
+}
+
+.example.example-4 .select-wrapper select:focus {
+    outline: none;
+}
+
+.example.example-4 .field.focus::-webkit-input-placeholder,
+.example.example-4 .field:focus::-webkit-input-placeholder {
+    color: #cfd7df;
+}
+
+.example.example-4 .field.focus::-moz-placeholder,
+.example.example-4 .field:focus::-moz-placeholder {
+    color: #cfd7df;
+}
+
+.example.example-4 .field.focus:-ms-input-placeholder,
+.example.example-4 .field:focus:-ms-input-placeholder {
+    color: #cfd7df;
+}
+
+.example.example-4 input,
+.example.example-4 select,
+.example.example-4 button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border-style: none;
+}
+
+.example.example-4 select,
+.example.example-4 input {
+    color: #fff;
+    background-color: #063852;
+}
+
+.example.example-4 input::-webkit-input-placeholder {
+    color: #f0810f;
+}
+
+.example.example-4 input::-moz-placeholder {
+    color: #f0810f;
+}
+
+.example.example-4 input:-ms-input-placeholder {
+    color: #f0810f;
+}
+
+.example.example-4 button {
+    display: block;
+    width: calc(100% - 30px);
+    height: 40px;
+    margin: 0 15px;
+    background-color: #e6df44;
+    border-radius: 20px;
+    color: #011a27;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.example.example-4 button:active {
+    background-color: #f5be58;
+}
+
+.example.example-4 .error svg .base {
+    fill: #f5be58;
+}
+
+.example.example-4 .error svg .glyph {
+    fill: #fff;
+}
+
+.example.example-4 .error .message {
+    color: #fff;
+}
+
+.example.example-4 .success .icon .border {
+    stroke: #e6df44;
+}
+
+.example.example-4 .success .icon .checkmark {
+    stroke: #fff;
+}
+
+.example.example-4 .success .title {
+    color: #fff;
+}
+
+.example.example-4 .success .message {
+    color: #9cabc8;
+}
+
+.example.example-4 .success .reset path {
+    fill: #fff;
+}
