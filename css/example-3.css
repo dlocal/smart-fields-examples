@@ -1,5 +1,5 @@
 .example.example-3 {
-    background-color: #46211a;
+    background-color: #bcbabe;
 }
 
 .example.example-3 * {
@@ -12,7 +12,7 @@
     margin: 0 15px 20px;
     padding: 0;
     border-style: none;
-    background-color: #693D3D;
+    background-color: #a1d6e2;
     border-radius: 4px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .example.example-3 .field+.field {
-    border-top: 1px solid #a43820;
+    border-top: 1px solid #1995ad;
 }
 
 .example.example-3 .field .half {
@@ -69,7 +69,7 @@
     width: fit-content;
     margin-right: 15px;
     padding: 11px 0;
-    color: #ba5536;
+    color: #f1f1f3;
     white-space: nowrap;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .example.example-3 input:-webkit-autofill {
-    -webkit-text-fill-color: #f1d444;
+    -webkit-text-fill-color: #f5e636;
     transition: background-color 100000000s;
     -webkit-animation: 1ms void-animation-out;
 }
@@ -106,15 +106,15 @@
 }
 
 .example.example-3 input::-webkit-input-placeholder {
-    color: #a43820;
+    color: #1995ad;
 }
 
 .example.example-3 input::-moz-placeholder {
-    color: #a43820;
+    color: #1995ad;
 }
 
 .example.example-3 input:-ms-input-placeholder {
-    color: #a43820;
+    color: #1995ad;
 }
 
 .example.example-3 button {
@@ -122,8 +122,8 @@
     width: calc(100% - 30px);
     height: 40px;
     margin: 40px 15px 0;
-    background-color: #a43820;
-    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #46211a;
+    background-color: #1995ad;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #bcbabe;
     border-radius: 4px;
     color: #fff;
     font-weight: 600;
@@ -131,8 +131,8 @@
 }
 
 .example.example-3 button:active {
-    background-color: #a43820;
-    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #46211a;
+    background-color: #1995ad;
+    box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #bcbabe;
 }
 
 .example.example-3 .error svg .base {
@@ -148,23 +148,23 @@
 }
 
 .example.example-3 .success .icon .border {
-    stroke: #a43820;
+    stroke: #1995ad;
 }
 
 .example.example-3 .success .icon .checkmark {
-    stroke: #ba5536;
+    stroke: #f1f1f3;
 }
 
 .example.example-3 .success .title {
-    color: #ba5536;
+    color: #f1f1f3;
 }
 
 .example.example-3 .success .message {
-    color: #ba5536;
+    color: #f1f1f3;
 }
 
 .example.example-3 .success .reset path {
-    fill: #ba5536;
+    fill: #f1f1f3;
 }
 
 .example.example-3 .container {

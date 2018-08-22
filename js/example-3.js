@@ -8,9 +8,9 @@ const panExample3 = fields.create('pan', {
             fontWeight: '500',
             color: "white",
             '::placeholder': {
-                color: "#a43820"
+                color: "#1995ad"
             },
-            iconColor: "#ba5536"
+            iconColor: "#1995ad"
         }
     },
     placeholder: "4111 1111 1111 1111"
@@ -28,7 +28,7 @@ const expirationExample3 = fields.create('expiration', {
             fontWeight: '500',
             color: "white",
             '::placeholder': {
-                color: "#a43820"
+                color: "#1995ad"
             }
         }
     },
@@ -45,7 +45,7 @@ const cvvExample3 = fields.create('cvv', {
             fontWeight: '500',
             color: "white",
             '::placeholder': {
-                color: "#a43820"
+                color: "#1995ad"
             }
         }
     },
@@ -56,11 +56,13 @@ const cvvExample3 = fields.create('cvv', {
 let isPanExample3Completed = false;
 panExample3.on('complete', function (event) {
     isPanExample3Completed = event.complete;
+    expirationExample3.focus()
 })
 
 let isExpirationExample3Completed = false;
 expirationExample3.on('complete', function (event) {
     isExpirationExample3Completed = event.complete;
+    cvvExample3.focus();
 })
 
 let isCvvExample3Completed = false;
