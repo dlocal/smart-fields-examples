@@ -48,10 +48,10 @@ function registerClearBtn(exampleName, fields) {
         example.classList.remove('submitted');
 
         var installmentsInput = form.querySelector('.installments');
-        installmentsInput.disabled = true;
-        installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
-
-
+        if (installmentsInput) {
+            installmentsInput.disabled = true;
+            installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
+        }
     });
 }
 
@@ -103,4 +103,15 @@ function registerEvents(exampleName, fields) {
         }
     }
 
+
+
+}
+
+function buildInstallments(installmentsInput, installmentsPlan) {
+    const installmentsOptions = installmentsPlan.installments.reduce(function (options, plan) {
+        options += "<option value=" + plan.id + ">" + plan.installments + " of " + "BRL" + " " + plan.installment_amount + " (Total : " + "BRL" + " " + plan.total_amount + ")</option>";
+        return options;
+    }, "");
+    installmentsInput.disabled = false;
+    installmentsInput.innerHTML = installmentsOptions;
 }

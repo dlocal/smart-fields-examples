@@ -1,5 +1,7 @@
-var example = document.querySelector(".example-4");
-var form = example.querySelector('form');
+var example4 = document.querySelector(".example-4");
+var form4 = example4.querySelector('form');
+var error4 = form4.querySelector('.error');
+var errorMessage4 = error4.querySelector('.message');
 
 const cardExample4 = fields.create('card', {
     style: {
@@ -34,7 +36,7 @@ cardExample4.on('complete', function (event) {
 })
 
 cardExample4.on('ready', function (event) {
-    example.classList.remove('submitting');
+    example4.classList.remove('submitting');
 
 });
 
@@ -58,12 +60,10 @@ cardExample4.on('autofilled', function (event) {
 document.getElementById('fields-form-example-4').onsubmit = function (e) {
     e.preventDefault();
 
-    var error = form.querySelector('.error');
-    var errorMessage = error.querySelector('.message');
     // Trigger HTML5 validation UI on the form if any of the inputs fail
     // validation.
     var plainInputsValid = true;
-    Array.prototype.forEach.call(form.querySelectorAll('input'), function (
+    Array.prototype.forEach.call(form4.querySelectorAll('input'), function (
         input
     ) {
         if (input.checkValidity && !input.checkValidity()) {
@@ -72,31 +72,31 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
         }
     });
     if (!plainInputsValid) {
-        triggerBrowserValidation(form);
+        triggerBrowserValidation(form4);
         return;
     }
     if (!iscardExample4Completed) {
-        if (!errorMessage.innerText) {
-            error.classList.add('visible');
-            errorMessage.innerText = 'Complete credit card data.';
+        if (!errorMessage4.innerText) {
+            error4.classList.add('visible');
+            errorMessage4.innerText = 'Complete credit card data.';
         }
 
         return;
     }
     // Show a loading screen...
-    example.classList.add('submitting');
+    example4.classList.add('submitting');
     dlocalInstance.createToken(cardExample4, {
         name: document.getElementById('example-4-name').value
     }).then((result) => {
-        error.classList.remove('visible');
-        errorMessage.innerText = "";
-        example.classList.remove('submitting');
-        example.querySelector(".token").innerText = result.token;
-        example.classList.add("submitted");
+        error4.classList.remove('visible');
+        errorMessage4.innerText = "";
+        example4.classList.remove('submitting');
+        example4.querySelector(".token").innerText = result.token;
+        example4.classList.add("submitted");
     }).catch((result) => {
-        example.classList.remove('submitting');
-        error.classList.add('visible');
-        errorMessage.innerText = result.error.message;
+        example4.classList.remove('submitting');
+        error4.classList.add('visible');
+        errorMessage4.innerText = result.error.message;
     });
 
 }
@@ -105,30 +105,20 @@ registerEvents("example-4", [cardExample4])
 
 cardExample4.mount(document.getElementById('example-4-card'));
 
-let actualBrand = null;
+let actualBrand4 = null;
 cardExample4.on('brand', function (event) {
 
-    if (event.brand && actualBrand !== event.brand) {
-        actualBrand = event.brand;
+    if (event.brand && actualBrand4 !== event.brand) {
+        actualBrand4 = event.brand;
 
         dlocalInstance.createInstallmentsPlan(cardExample4, 500, "BRL")
             .then((result) => {
-                var installmentsSelect = form.querySelector('.installments');
-                buildInstallments(installmentsSelect, result.installments);
+                var installmentsSelect4 = form4.querySelector('.installments');
+                buildInstallments(installmentsSelect4, result.installments);
             }).catch((result) => {
                 console.error(result);
-                error.classList.add('visible');
-                errorMessage.innerText = result.error.message;
+                error4.classList.add('visible');
+                errorMessage4.innerText = result.error.message;
             });
     }
 });
-
-
-function buildInstallments(installmentsInput, installmentsPlan) {
-    const installmentsOptions = installmentsPlan.installments.reduce(function (options, plan) {
-        options += "<option value=" + plan.id + ">" + plan.installments + " of " + "BRL" + " " + plan.installment_amount + " (Total : " + "BRL" + " " + plan.total_amount + ")</option>";
-        return options;
-    }, "");
-    installmentsInput.disabled = false;
-    installmentsInput.innerHTML = installmentsOptions;
-}
