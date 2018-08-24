@@ -269,7 +269,7 @@ main>.container-lg .row {
     -ms-flex: auto;
     flex: auto;
     min-width: 100%;
-    min-height: 500px;
+    min-height: 300px;
     padding: 0 40px;
 }
 
@@ -557,6 +557,11 @@ footer {
     cursor: pointer;
     font-size: 15px;
     line-height: 26px;
+}
+
+.mainContent .dlocal-logo {
+    width: 220px !important;
+    margin-bottom: 25px;
 }
 
 .optionList a.selected {
