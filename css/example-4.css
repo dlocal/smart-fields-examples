@@ -39,6 +39,10 @@
     margin-top: 6px;
 }
 
+.example.example-4 .field.autofilled {
+    background-color: rgb(250, 255, 189) !important;
+}
+
 .example.example-4 .field.focus,
 .example.example-4 .field:focus {
     color: #424770;

@@ -1,4 +1,4 @@
-const cardFieldExample1 = fields.create('card', {
+const cardExample1 = fields.create('card', {
     style: {
         base: {
             fontSize: "16px",
@@ -15,19 +15,6 @@ const cardFieldExample1 = fields.create('card', {
     }
 });
 
-cardFieldExample1.on('autofilled', function (event) {
-    if (event.autofilled) {
-        document.getElementById('example-1-card').classList.add("autofilled");
-    } else {
-        document.getElementById('example-1-card').classList.remove("autofilled");
-    }
-})
-
-let isCardFieldExample1Completed = false;
-cardFieldExample1.on('complete', function (event) {
-    isCardFieldExample1Completed = event.complete;
-})
-
 
 document.getElementById('fields-form-example-1').onsubmit = function (e) {
     e.preventDefault();
@@ -37,7 +24,7 @@ document.getElementById('fields-form-example-1').onsubmit = function (e) {
     var error = form.querySelector('.error');
     var errorMessage = error.querySelector('.message');
 
-    if (!isCardFieldExample1Completed) {
+    if (!areExample1FieldsCompleated) {
         if (!errorMessage.innerText) {
             error.classList.add('visible');
             errorMessage.innerText = 'Complete credit card data.';
@@ -47,7 +34,7 @@ document.getElementById('fields-form-example-1').onsubmit = function (e) {
 
     // Show a loading screen...
     example.classList.add('submitting');
-    dlocalInstance.createToken(cardFieldExample1, {
+    dlocalInstance.createToken(cardExample1, {
         name: "Test"
     }).then((result) => {
         error.classList.remove('visible');
@@ -62,8 +49,13 @@ document.getElementById('fields-form-example-1').onsubmit = function (e) {
     });
 
 }
-registerClearBtn("example-1", [cardFieldExample1])
-registerEvents("example-1", [cardFieldExample1])
 
 
-cardFieldExample1.mount(document.getElementById('example-1-card'));
+let areExample1FieldsCompleated = false;
+registerClearBtn("example-1", [cardExample1])
+registerEvents("example-1", [cardExample1], ["example-1-card"], function (compleated) {
+    areExample1FieldsCompleated = compleated;
+})
+
+
+cardExample1.mount(document.getElementById('example-1-card'));

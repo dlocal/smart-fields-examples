@@ -48,14 +48,14 @@ function registerClearBtn(exampleName, fields) {
         example.classList.remove('submitted');
 
         var installmentsInput = form.querySelector('.installments');
-        installmentsInput.disabled = true;
-        installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
-
-
+        if (installmentsInput) {
+            installmentsInput.disabled = true;
+            installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
+        }
     });
 }
 
-function registerEvents(exampleName, fields) {
+function registerEvents(exampleName, fields, fieldsNames, onCompleatedChange) {
     var formClass = '.' + exampleName;
     var example = document.querySelector(formClass);
 
@@ -68,12 +68,40 @@ function registerEvents(exampleName, fields) {
 
     // Listen for errors from each Smart-Field, and show error messages in the UI.
     var savedErrors = {};
+    var fieldsCompleated = new Array(fields.lenght).fill(false);
+    var fieldsReady = new Array(fields.lenght).fill(false);
     fields.forEach(function (field, idx) {
         field.on('change', function (event) {
             showErrors(event, idx)
         });
         field.on('blur', function (event) {
+            document.getElementById(fieldsNames[idx]).classList.remove("focus");
             showErrors(event, idx)
+        });
+
+        field.on('focus', function (event) {
+            document.getElementById(fieldsNames[idx]).classList.add("focus");
+        })
+
+        field.on('autofilled', function (event) {
+            if (event.autofilled) {
+                document.getElementById(fieldsNames[idx]).classList.add("autofilled");
+            } else {
+                document.getElementById(fieldsNames[idx]).classList.remove("autofilled");
+            }
+        })
+
+        field.on('complete', function (event) {
+            fieldsCompleated[idx] = event.complete;
+            fields[idx + 1] ? fields[idx + 1].focus() : null;
+            onCompleatedChange(allFieldsTrue(fieldsCompleated));
+        })
+
+        field.on('ready', function (event) {
+            fieldsReady[idx] = true;
+            if (allFieldsTrue(fieldsReady)) {
+                example.classList.remove('submitting');
+            }
         });
     });
 
@@ -102,5 +130,21 @@ function registerEvents(exampleName, fields) {
             }
         }
     }
+}
 
+function allFieldsTrue(fields) {
+    let result = true;
+    fields.forEach(function (field, idx) {
+        result = result && field;
+    });
+    return result;
+}
+
+function buildInstallments(installmentsInput, installmentsPlan) {
+    const installmentsOptions = installmentsPlan.installments.reduce(function (options, plan) {
+        options += "<option value=" + plan.id + ">" + plan.installments + " of " + "BRL" + " " + plan.installment_amount + " (Total : " + "BRL" + " " + plan.total_amount + ")</option>";
+        return options;
+    }, "");
+    installmentsInput.disabled = false;
+    installmentsInput.innerHTML = installmentsOptions;
 }

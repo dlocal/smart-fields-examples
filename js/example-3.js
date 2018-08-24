@@ -52,25 +52,6 @@ const cvvExample3 = fields.create('cvv', {
     placeholder: "123"
 });
 
-
-let isPanExample3Completed = false;
-panExample3.on('complete', function (event) {
-    isPanExample3Completed = event.complete;
-    expirationExample3.focus()
-})
-
-let isExpirationExample3Completed = false;
-expirationExample3.on('complete', function (event) {
-    isExpirationExample3Completed = event.complete;
-    cvvExample3.focus();
-})
-
-let isCvvExample3Completed = false;
-cvvExample3.on('complete', function (event) {
-    isCvvExample3Completed = event.complete;
-})
-
-
 document.getElementById('fields-form-example-3').onsubmit = function (e) {
     e.preventDefault();
     var example = document.querySelector(".example-3");
@@ -92,7 +73,7 @@ document.getElementById('fields-form-example-3').onsubmit = function (e) {
         triggerBrowserValidation(form);
         return;
     }
-    if (!isPanExample3Completed || !isExpirationExample3Completed || !isCvvExample3Completed) {
+    if (!areExample3FieldsCompleated) {
         if (!errorMessage.innerText) {
             error.classList.add('visible');
             errorMessage.innerText = 'Complete credit card data.';
@@ -123,8 +104,12 @@ document.getElementById('fields-form-example-3').onsubmit = function (e) {
     });
 
 }
+
+let areExample3FieldsCompleated = false;
 registerClearBtn("example-3", [panExample3, expirationExample3, cvvExample3])
-registerEvents("example-3", [panExample3, expirationExample3, cvvExample3])
+registerEvents("example-3", [panExample3, expirationExample3, cvvExample3], ["example-3-pan", "example-3-expiration", "example-3-cvv"], function (compleated) {
+    areExample3FieldsCompleated = compleated;
+})
 
 panExample3.mount(document.getElementById('example-3-pan'));
 expirationExample3.mount(document.getElementById('example-3-expiration'));

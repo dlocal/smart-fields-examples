@@ -1,4 +1,4 @@
-const cardFieldExample2 = fields.create('card', {
+const cardExample2 = fields.create('card', {
     style: {
         base: {
             fontSize: "16px",
@@ -14,19 +14,6 @@ const cardFieldExample2 = fields.create('card', {
         }
     }
 });
-
-cardFieldExample2.on('autofilled', function (event) {
-    if (event.autofilled) {
-        document.getElementById('example-2-card').classList.add("autofilled");
-    } else {
-        document.getElementById('example-2-card').classList.remove("autofilled");
-    }
-})
-
-let isCardFieldExample2Completed = false;
-cardFieldExample2.on('complete', function (event) {
-    isCardFieldExample2Completed = event.complete;
-})
 
 
 document.getElementById('fields-form-example-2').onsubmit = function (e) {
@@ -50,7 +37,7 @@ document.getElementById('fields-form-example-2').onsubmit = function (e) {
         triggerBrowserValidation(form);
         return;
     }
-    if (!isCardFieldExample2Completed) {
+    if (!areExample2FieldsCompleated) {
         if (!errorMessage.innerText) {
             error.classList.add('visible');
             errorMessage.innerText = 'Complete credit card data.';
@@ -60,7 +47,7 @@ document.getElementById('fields-form-example-2').onsubmit = function (e) {
     }
     // Show a loading screen...
     example.classList.add('submitting');
-    dlocalInstance.createToken(cardFieldExample2, {
+    dlocalInstance.createToken(cardExample2, {
         name: document.getElementById('example-2-name').value,
         address_line1: document.getElementById('example-2-address').value,
         address_city: document.getElementById('example-2-city').value,
@@ -81,7 +68,12 @@ document.getElementById('fields-form-example-2').onsubmit = function (e) {
     });
 
 }
-registerClearBtn("example-2", [cardFieldExample2])
-registerEvents("example-2", [cardFieldExample2])
 
-cardFieldExample2.mount(document.getElementById('example-2-card'));
+
+let areExample2FieldsCompleated = false;
+registerClearBtn("example-2", [cardExample2])
+registerEvents("example-2", [cardExample2], ["example-2-card"], function (compleated) {
+    areExample2FieldsCompleated = compleated;
+})
+
+cardExample2.mount(document.getElementById('example-2-card'));
