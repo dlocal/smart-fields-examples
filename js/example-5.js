@@ -74,53 +74,6 @@ const cvvExample5 = fields.create('cvv', {
 });
 
 
-let isPanExample5Completed = false;
-panExample5.on('complete', function (event) {
-    isPanExample5Completed = event.complete;
-    expirationExample5.focus()
-})
-
-let isExpirationExample5Completed = false;
-expirationExample5.on('complete', function (event) {
-    isExpirationExample5Completed = event.complete;
-    cvvExample5.focus();
-})
-
-let isCvvExample5Completed = false;
-cvvExample5.on('complete', function (event) {
-    isCvvExample5Completed = event.complete;
-})
-
-cardExample4.on('ready', function (event) {
-
-
-});
-
-let isPanExample5Ready = false;
-panExample5.on('ready', function (event) {
-    isPanExample5Ready = true;
-    if (isPanExample5Ready && isExpirationExample5Ready && isCvvExample5Ready) {
-        example5.classList.remove('submitting');
-    }
-})
-
-let isExpirationExample5Ready = false;
-expirationExample5.on('ready', function (event) {
-    isExpirationExample5Ready = true;
-    if (isPanExample5Ready && isExpirationExample5Ready && isCvvExample5Ready) {
-        example5.classList.remove('submitting');
-    }
-})
-
-let isCvvExample5Ready = false;
-cvvExample5.on('ready', function (event) {
-    isCvvExample5Ready = true;
-    if (isPanExample5Ready && isExpirationExample5Ready && isCvvExample5Ready) {
-        example5.classList.remove('submitting');
-    }
-})
-
-
 document.getElementById('fields-form-example-5').onsubmit = function (e) {
     e.preventDefault();
 
@@ -139,7 +92,7 @@ document.getElementById('fields-form-example-5').onsubmit = function (e) {
         triggerBrowserValidation(form5);
         return;
     }
-    if (!isPanExample5Completed || !isExpirationExample5Completed || !isCvvExample5Completed) {
+    if (!areExample5FieldsCompleated) {
         if (!errorMessage5.innerText) {
             error5.classList.add('visible');
             errorMessage5.innerText = 'Complete credit card data.';
@@ -164,8 +117,11 @@ document.getElementById('fields-form-example-5').onsubmit = function (e) {
     });
 
 }
+let areExample5FieldsCompleated = false;
 registerClearBtn("example-5", [panExample5, expirationExample5, cvvExample5])
-registerEvents("example-5", [panExample5, expirationExample5, cvvExample5])
+registerEvents("example-5", [panExample5, expirationExample5, cvvExample5], ["example-5-pan", "example-5-expiration", "example-5-cvv"], function (compleated) {
+    areExample5FieldsCompleated = compleated;
+})
 
 panExample5.mount(document.getElementById('example-5-pan'));
 expirationExample5.mount(document.getElementById('example-5-expiration'));

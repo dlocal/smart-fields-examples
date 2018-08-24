@@ -28,35 +28,6 @@ const cardExample4 = fields.create('card', {
 
 
 
-
-let iscardExample4Completed = false;
-cardExample4.on('complete', function (event) {
-    iscardExample4Completed = event.complete;
-    expirationExample4.focus()
-})
-
-cardExample4.on('ready', function (event) {
-    example4.classList.remove('submitting');
-
-});
-
-cardExample4.on('focus', function (event) {
-    document.getElementById('example-4-card').classList.add("focus");
-})
-
-cardExample4.on('blur', function (event) {
-    document.getElementById('example-4-card').classList.remove("focus");
-})
-
-cardExample4.on('autofilled', function (event) {
-    if (event.autofilled) {
-        document.getElementById('example-4-card').classList.add("autofilled");
-    } else {
-        document.getElementById('example-4-card').classList.remove("autofilled");
-    }
-})
-
-
 document.getElementById('fields-form-example-4').onsubmit = function (e) {
     e.preventDefault();
 
@@ -75,7 +46,7 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
         triggerBrowserValidation(form4);
         return;
     }
-    if (!iscardExample4Completed) {
+    if (!areExample4FieldsCompleated) {
         if (!errorMessage4.innerText) {
             error4.classList.add('visible');
             errorMessage4.innerText = 'Complete credit card data.';
@@ -100,8 +71,12 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
     });
 
 }
+
+let areExample4FieldsCompleated = false;
 registerClearBtn("example-4", [cardExample4])
-registerEvents("example-4", [cardExample4])
+registerEvents("example-4", [cardExample4], ["example-4-card"], function (compleated) {
+    areExample4FieldsCompleated = compleated;
+})
 
 cardExample4.mount(document.getElementById('example-4-card'));
 
