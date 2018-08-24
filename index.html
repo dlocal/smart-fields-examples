@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -16,9 +18,9 @@
     <link rel="stylesheet" href="css/example-5.css">
     <link rel="stylesheet" href="css/example-6.css">
 
-    <!-- checkboxs and radiobox CSS -->
+    <!-- checkboxs and radiobox CSS used in example 6 -->
     <link rel="stylesheet" href="./css/checkbox.css">
-    <!-- floating-labels CSS -->
+    <!-- floating-labels CSS used in example 6 -->
     <link rel="stylesheet" href="./css/floating-label.css">
 </head>
 
@@ -36,7 +38,9 @@
                         <a id="button_about_us" href="https://dlocal.com/company/about-us/" target="_blank" class="common-Button">About us</a>
                     </p>
                 </section>
+
                 <!--Example 1-->
+
                 <section class="row example example-1 submitting" id="example-1">
                     <form id="fields-form-example-1">
                         <fieldset>
@@ -332,9 +336,10 @@
                     <form id="fields-form-example-5">
 
                         <div class="fieldset">
+                            <legend class="example-5-title">Add Payment Method</legend>
                             <fieldset>
                                 <div class="field">
-                                    <label for="example5-name" id="elements_examples.form.name_label">NAME</label>
+                                    <label for="example5-name">NAME</label>
                                     <input id="example-5-name" class="input" type="text" placeholder="John Doe" required autocomplete="name">
                                 </div>
                                 <div class="field">
@@ -352,7 +357,7 @@
                                     </div>
                                 </div>
                                 <div class="field select-wrapper">
-                                    <label for="example-5-installments">Installments</label>
+                                    <label for="example-5-installments">INSTALLMENTS</label>
                                     <span>▼</span>
                                     <select for="example-5-installments" class="installments" disabled>
                                         <option value="">-</option>
@@ -403,6 +408,7 @@
                 </section>
 
                 <!--Example 6-->
+
                 <section class="row example example-6">
                     <div id="loader-example-6" class="loader"></div>
                     <div id="fields-form-example-6">

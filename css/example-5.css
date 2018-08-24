@@ -12,10 +12,16 @@
 .example.example-5 form {
     max-width: 320px !important;
     line-height: 21px;
-    text-transform: uppercase !important;
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "lnum";
     color: #000;
+}
+
+.example.example-5 .example-5-title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5625em;
+    color: #bdbdbd;
+    font-weight: 700;
 }
 
 .example.example-5 fieldset {
