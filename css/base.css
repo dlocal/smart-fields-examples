@@ -606,3 +606,49 @@ footer {
         margin-left: 13px;
     }
 }
+
+@media screen and (max-width: 670px) {
+    .title {
+        font-size: 45px;
+        line-height: 60px;
+    }
+    .subtitle {
+        font-size: 21px;
+        line-height: 35px;
+    }
+    .mainContent .dlocal-logo {
+        width: 160px !important;
+    }
+    #example-1 {
+        margin-top: 10px;
+    }
+    main>.container-lg .example {
+        padding: 60px 0px;
+    }
+    main>.container-lg .row {
+        min-height: 300px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 36px;
+        line-height: 50px;
+    }
+    .subtitle {
+        font-size: 17px;
+        line-height: 29px;
+    }
+    .mainContent .dlocal-logo {
+        width: 135px !important;
+    }
+    #example-1 {
+        margin-top: 10px;
+    }
+    main>.container-lg .example {
+        padding: 40px 0px;
+    }
+    main>.container-lg .row {
+        min-height: unset;
+    }
+}
