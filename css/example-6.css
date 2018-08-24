@@ -552,7 +552,6 @@ LOADER
     }
     .example.example-6 .exampleX {
         height: fit-content;
-        width: calc(100% - 20px);
     }
     .example.example-6 .custom button {
         margin-bottom: 20px;
@@ -610,14 +609,14 @@ LOADER
         box-shadow: none;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
-        margin-left: 5px;
-        margin-right: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
     .example.example-6 .exampleX {
-        width: calc(100% - 10px);
+        width: 100%;
         border: none;
-        margin-top: 25px;
-        margin-bottom: 25px;
+        margin-top: unset;
+        margin-bottom: unset;
     }
     .example.example-6 .containerX {
         margin-left: 0px;
