@@ -104,25 +104,11 @@ body {
     letter-spacing: -.01em;
 }
 
-@media (min-width: 670px) {
-    .title {
-        font-size: 50px;
-        line-height: 70px;
-    }
-}
-
 .subtitle {
     font-weight: 400;
     font-size: 21px;
     line-height: 31px;
     color: #525f7f;
-}
-
-@media (min-width: 670px) {
-    .subtitle {
-        font-size: 24px;
-        line-height: 36px;
-    }
 }
 
 .common-BodyText {
@@ -295,17 +281,6 @@ main>.container-lg .row.intro {
     padding: 0;
 }
 
-@media (min-width: 670px) {
-    main>.container-lg .row.intro {
-        -ms-flex-align: center;
-        align-items: center;
-        text-align: center;
-    }
-    .optionList {
-        margin-left: 13px;
-    }
-}
-
 main>.container-lg .row.intro>* {
     width: 100%;
     max-width: 700px;
@@ -332,12 +307,6 @@ main>.container-lg .example {
     padding: 80px 0px;
     margin-left: -20px;
     margin-right: -20px;
-}
-
-@media (min-width: 670px) {
-    main>.container-lg .example {
-        padding: 40px;
-    }
 }
 
 main>.container-lg .example.submitted form,
@@ -508,12 +477,6 @@ main>.container-lg .example .success {
     overflow: hidden;
 }
 
-@media (min-width: 670px) {
-    main>.container-lg .example .success {
-        padding: 40px;
-    }
-}
-
 main>.container-lg .example .success>* {
     transition-property: opacity, transform;
     transition-duration: 0.35s;
@@ -612,4 +575,29 @@ footer {
 
 .autofilled {
     background-color: #fefde5;
+}
+
+@media (min-width: 670px) {
+    .title {
+        font-size: 50px;
+        line-height: 70px;
+    }
+    .subtitle {
+        font-size: 24px;
+        line-height: 36px;
+    }
+    main>.container-lg .example {
+        padding: 40px;
+    }
+    main>.container-lg .example .success {
+        padding: 40px;
+    }
+    main>.container-lg .row.intro {
+        -ms-flex-align: center;
+        align-items: center;
+        text-align: center;
+    }
+    .optionList {
+        margin-left: 13px;
+    }
 }
