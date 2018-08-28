@@ -23,7 +23,7 @@ function triggerBrowserValidation(form) {
     submit.remove();
 }
 
-function registerClearBtn(exampleName, fields) {
+function registerClearBtn(exampleName, fields, onClear) {
     var formClass = '.' + exampleName;
     var example = document.querySelector(formClass);
 
@@ -52,7 +52,12 @@ function registerClearBtn(exampleName, fields) {
             installmentsInput.disabled = true;
             installmentsInput.innerHTML = "<option style='color: #f0810f' value=''>-</option>";
         }
+
+        if (onClear) {
+            onClear();
+        }
     });
+
 }
 
 function registerEvents(exampleName, fields, fieldsNames, onCompleatedChange) {

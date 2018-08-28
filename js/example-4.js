@@ -23,7 +23,8 @@ const cardExample4 = fields.create('card', {
                 color: "#c0670c"
             }
         }
-    }
+    },
+    hideIcon: true
 });
 
 

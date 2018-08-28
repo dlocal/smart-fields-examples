@@ -269,12 +269,12 @@ main>.container-lg .row {
     -ms-flex: auto;
     flex: auto;
     min-width: 100%;
-    min-height: 300px;
+    min-height: 350px;
     padding: 0 40px;
 }
 
 main>.container-lg .row+.row {
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 main>.container-lg .row.intro {
@@ -367,7 +367,27 @@ main>.container-lg .example .caption {
     font-weight: 500;
 }
 
+main>.container-lg .example .caption-top {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: -38px;
+    left: 0;
+    padding: 15px 10px 0;
+    color: #aab7c4;
+    font-family: Roboto, "Open Sans", "Segoe UI", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
 main>.container-lg .example .caption * {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+main>.container-lg .example .caption-top * {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
@@ -619,14 +639,8 @@ footer {
     .mainContent .dlocal-logo {
         width: 160px !important;
     }
-    #example-1 {
-        margin-top: 10px;
-    }
     main>.container-lg .example {
         padding: 60px 0px;
-    }
-    main>.container-lg .row {
-        min-height: 300px;
     }
 }
 
@@ -642,13 +656,18 @@ footer {
     .mainContent .dlocal-logo {
         width: 135px !important;
     }
-    #example-1 {
-        margin-top: 10px;
+    main>.container-lg .example .success .icon {
+        margin: unset;
     }
-    main>.container-lg .example {
-        padding: 40px 0px;
+    main>.container-lg .example .success .icon svg {
+        height: 45px;
     }
-    main>.container-lg .row {
-        min-height: unset;
+    main>.container-lg .example .success .title {
+        font-size: 15px;
+        margin-bottom: unset;
+    }
+    main>.container-lg .example .success .message {
+        font-size: 12px;
+        margin-bottom: 15px;
     }
 }
