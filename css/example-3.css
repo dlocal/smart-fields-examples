@@ -26,7 +26,7 @@
 }
 
 .example.example-3 .field.autofilled {
-    background-color: rgb(250, 255, 189) !important;
+    background-color: #fefde5 !important;
 }
 
 .example.example-3 .field+.field {
@@ -84,10 +84,6 @@
     appearance: none;
     outline: none;
     border-style: none;
-}
-
-.example.example-3 .DlocalField-autofill {
-    background: transparent !important;
 }
 
 .example.example-3 .DlocalField {
