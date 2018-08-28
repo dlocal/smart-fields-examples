@@ -49,4 +49,4 @@ Example 5 shows a form that displays the abailable installments for the example 
 - [CSS](css/example-6.css)
 
 Example 6 shows a form that uses individual `number`, `expiration`, and `cvv` fields, styled with floating labels, and many other features thar show the power of Smart-Fields to be styled as you need in your site.
-This example also uses [CSS](css/floating-label.css) and [CSS](css/checkbox.css)
+This example also uses [floating-label.css](css/floating-label.css) and [checkbox.css](css/checkbox.css)
