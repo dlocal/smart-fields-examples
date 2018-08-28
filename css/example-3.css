@@ -29,8 +29,11 @@
     background-color: #fefde5 !important;
 }
 
-.example.example-3 input:-webkit-autofill {
-    background-color: #fefde5 !important;
+.example.example-3 input:-webkit-autofill,
+.example.example-3 input:-webkit-autofill:hover,
+.example.example-3 input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fefde5 inset;
+    box-shadow: 0 0 0px 1000px #fefde5 inset;
 }
 
 .example.example-3 .field+.field {
