@@ -25,6 +25,10 @@
     margin-right: 15px;
 }
 
+.example.example-3 .field.autofilled {
+    background-color: rgb(250, 255, 189) !important;
+}
+
 .example.example-3 .field+.field {
     border-top: 1px solid #1995ad;
 }
@@ -82,13 +86,7 @@
     border-style: none;
 }
 
-.example.example-3 input:-webkit-autofill {
-    -webkit-text-fill-color: #f5e636;
-    transition: background-color 100000000s;
-    -webkit-animation: 1ms void-animation-out;
-}
-
-.example.example-3 .DlocalField--webkit-autofill {
+.example.example-3 .DlocalField-autofill {
     background: transparent !important;
 }
 
