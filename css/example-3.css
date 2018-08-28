@@ -29,6 +29,10 @@
     background-color: #fefde5 !important;
 }
 
+.example.example-3 input:-webkit-autofill {
+    background-color: #fefde5 !important;
+}
+
 .example.example-3 .field+.field {
     border-top: 1px solid #1995ad;
 }
