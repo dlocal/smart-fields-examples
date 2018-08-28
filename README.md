@@ -34,7 +34,7 @@ The form also collects other data outside of the payment form.
 - [JavaScript](js/example-4.js)
 - [CSS](css/example-4.css)
 
-Example 4 shows a form that displays the abailable installments for the example amount and uses the `card` SmartField.
+Example 4 shows a form that displays the abailable installments for the example amount and uses the `card` SmartField. This example does not show the brand icon flag.
 
 ## Example 5
 
@@ -49,3 +49,4 @@ Example 5 shows a form that displays the abailable installments for the example 
 - [CSS](css/example-6.css)
 
 Example 6 shows a form that uses individual `number`, `expiration`, and `cvv` fields, styled with floating labels, and many other features thar show the power of Smart-Fields to be styled as you need in your site.
+This example also uses [CSS](css/floating-label.css) and [CSS](css/checkbox.css)
