@@ -118,7 +118,9 @@ document.getElementById('fields-form-example-5').onsubmit = function (e) {
 
 }
 let areExample5FieldsCompleated = false;
-registerClearBtn("example-5", [panExample5, expirationExample5, cvvExample5])
+registerClearBtn("example-5", [panExample5, expirationExample5, cvvExample5], function () {
+    actualBrandExample5 = null;
+})
 registerEvents("example-5", [panExample5, expirationExample5, cvvExample5], ["example-5-pan", "example-5-expiration", "example-5-cvv"], function (compleated) {
     areExample5FieldsCompleated = compleated;
 })

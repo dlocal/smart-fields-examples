@@ -1,8 +1,29 @@
+// chek other elements of the form
+
 let name = document.getElementById('name')
 let nameContainer = document.getElementById('nameContainer')
+
+let country = document.getElementById('country')
+let countryContainer = document.getElementById('countryContainer')
+
+let cpf_cnpj = document.getElementById('cpf_cnpj')
+let cpf_cnpjContainer = document.getElementById('cpf_cnpjContainer')
+
+// onChange
 name.addEventListener("keyup", function () {
     checkRequired(name, nameContainer)
 })
+
+country.addEventListener("onchange", function () {
+    checkRequired(country, countryContainer)
+})
+
+
+cpf_cnpj.addEventListener("keyup", function () {
+    checkRequired(cpf_cnpj, cpf_cnpjContainer)
+})
+
+// onAutofilled
 
 const onAnimationStart = event => {
     switch (event.animationName) {
@@ -16,19 +37,6 @@ const onAnimationStart = event => {
 };
 name.addEventListener('animationstart', onAnimationStart);
 
-
-let country = document.getElementById('country')
-let countryContainer = document.getElementById('countryContainer')
-country.addEventListener("onchange", function () {
-    checkRequired(country, countryContainer)
-})
-
-let cpf_cnpj = document.getElementById('cpf_cnpj')
-let cpf_cnpjContainer = document.getElementById('cpf_cnpjContainer')
-cpf_cnpj.addEventListener("keyup", function () {
-    checkRequired(cpf_cnpj, cpf_cnpjContainer)
-})
-
 function checkRequired(input, container) {
     if (input.value) {
         container.classList.remove("hasError");
@@ -38,6 +46,8 @@ function checkRequired(input, container) {
         return false;
     }
 }
+
+// on submit
 
 function submit() {
     const isNameComplete = checkRequired(name, nameContainer);
@@ -73,6 +83,8 @@ function submit() {
             loader(false)
         })
 }
+
+// config fields
 
 const panField = fields.create('pan', {
     style: {
@@ -143,9 +155,13 @@ const expirationField = fields.create('expiration', {
     placeholder: monthStr + "/" + year
 });
 
+// mount fields
+
 panField.mount(document.getElementById('containerPan'));
 expirationField.mount(document.getElementById('containerExpiration'));
 cvvField.mount(document.getElementById('containerCVV'));
+
+// onReady
 
 let isPanReady = false;
 panField.on('ready', function (event) {
@@ -155,6 +171,24 @@ panField.on('ready', function (event) {
     }
 });
 
+let isExpirationReady = false;
+expirationField.on('ready', function (event) {
+    isExpirationReady = true;
+    if (isPanReady && isExpirationReady && isCVVReady) {
+        loader(false);
+    }
+});
+
+let isCVVReady = false;
+cvvField.on('ready', function (event) {
+    isCVVReady = true;
+    if (isPanReady && isExpirationReady && isCVVReady) {
+        loader(false);
+    }
+});
+
+//onComplete
+
 let isPanComplete = false;
 panField.on('complete', function (event) {
     isPanComplete = event.complete;
@@ -163,9 +197,37 @@ panField.on('complete', function (event) {
     }
 })
 
+let isExpirationComplete = false;
+expirationField.on('complete', function (event) {
+    isExpirationComplete = event.complete;
+    if (isExpirationComplete) {
+        cvvField.focus();
+    }
+})
+
+let isCVVComplete = false;
+cvvField.on('complete', function (event) {
+    isCVVComplete = event.complete;
+    if (isCVVComplete) {
+        name.focus();
+    }
+})
+
+// onClick
+
 function clickPan() {
     panField.focus();
 }
+
+function clickExpiration() {
+    expirationField.focus();
+}
+
+function clickCVV() {
+    cvvField.focus();
+}
+
+// onBlur
 
 panField.on('blur', function (event) {
     if (event.empty) {
@@ -183,10 +245,48 @@ panField.on('blur', function (event) {
     document.getElementById('containerPan').classList.remove("focus");
 })
 
+expirationField.on('blur', function (event) {
+    if (event.error) {
+        document.getElementById('fieldExpirationContainer').classList.add("Field--required");
+        document.getElementById('fieldExpirationContainer').classList.add("hasError");
+        let error = event.error.message ? event.error.message : "Enter your credit card expiration."
+        document.getElementById('expirationErrorMsg').innerHTML = error
+    } else {
+        document.getElementById('fieldExpirationContainer').classList.remove("Field--required");
+        document.getElementById('fieldExpirationContainer').classList.remove("hasError");
+    }
+    document.getElementById('containerExpiration').classList.remove("focus");
+})
+
+cvvField.on('blur', function (event) {
+    if (event.error) {
+        document.getElementById('fieldCVVContainer').classList.add("Field--required");
+        document.getElementById('fieldCVVContainer').classList.add("hasError");
+        let error = event.error.message ? event.error.message : "Enter your credit card CVV."
+        document.getElementById('cvvErrorMsg').innerHTML = error
+    } else {
+        document.getElementById('fieldCVVContainer').classList.remove("Field--required");
+        document.getElementById('fieldCVVContainer').classList.remove("hasError");
+    }
+    document.getElementById('containerCVV').classList.remove("focus");
+})
+
+// onFocus
+
 panField.on('focus', function (event) {
     document.getElementById('containerPan').classList.add("focus");
     document.getElementById('panOverlay').style.visibility = "hidden"
 })
+
+expirationField.on('focus', function (event) {
+    document.getElementById('containerExpiration').classList.add("focus");
+})
+
+cvvField.on('focus', function (event) {
+    document.getElementById('containerCVV').classList.add("focus");
+})
+
+// onAutofilled
 
 panField.on('autofilled', function (event) {
     if (event.autofilled) {
@@ -196,7 +296,23 @@ panField.on('autofilled', function (event) {
     }
 })
 
+expirationField.on('autofilled', function (event) {
+    if (event.autofilled) {
+        document.getElementById('fieldExpirationContainer').classList.add("autofilled");
+    } else {
+        document.getElementById('fieldExpirationContainer').classList.remove("autofilled");
+    }
+})
 
+cvvField.on('autofilled', function (event) {
+    if (event.autofilled) {
+        document.getElementById('fieldCVVContainer').classList.add("autofilled");
+    } else {
+        document.getElementById('fieldCVVContainer').classList.remove("autofilled");
+    }
+})
+
+// onChange
 
 panField.on('change', function (event) {
     if (!event.error) {
@@ -212,51 +328,6 @@ panField.on('change', function (event) {
         document.getElementById('containerPan').classList.add("empty");
     } else {
         document.getElementById('containerPan').classList.remove("empty");
-    }
-})
-
-let isExpirationReady = false;
-expirationField.on('ready', function (event) {
-    isExpirationReady = true;
-    if (isPanReady && isExpirationReady && isCVVReady) {
-        loader(false);
-    }
-});
-
-let isExpirationComplete = false;
-expirationField.on('complete', function (event) {
-    isExpirationComplete = event.complete;
-    if (isExpirationComplete) {
-        cvvField.focus();
-    }
-})
-
-function clickExpiration() {
-    expirationField.focus();
-}
-
-expirationField.on('blur', function (event) {
-    if (event.error) {
-        document.getElementById('fieldExpirationContainer').classList.add("Field--required");
-        document.getElementById('fieldExpirationContainer').classList.add("hasError");
-        let error = event.error.message ? event.error.message : "Enter your credit card expiration."
-        document.getElementById('expirationErrorMsg').innerHTML = error
-    } else {
-        document.getElementById('fieldExpirationContainer').classList.remove("Field--required");
-        document.getElementById('fieldExpirationContainer').classList.remove("hasError");
-    }
-    document.getElementById('containerExpiration').classList.remove("focus");
-})
-
-expirationField.on('focus', function (event) {
-    document.getElementById('containerExpiration').classList.add("focus");
-})
-
-expirationField.on('autofilled', function (event) {
-    if (event.autofilled) {
-        document.getElementById('fieldExpirationContainer').classList.add("autofilled");
-    } else {
-        document.getElementById('fieldExpirationContainer').classList.remove("autofilled");
     }
 })
 
@@ -277,50 +348,6 @@ expirationField.on('change', function (event) {
     }
 })
 
-let isCVVReady = false;
-cvvField.on('ready', function (event) {
-    isCVVReady = true;
-    if (isPanReady && isExpirationReady && isCVVReady) {
-        loader(false);
-    }
-});
-
-let isCVVComplete = false;
-cvvField.on('complete', function (event) {
-    isCVVComplete = event.complete;
-    if (isCVVComplete) {
-        name.focus();
-    }
-})
-
-function clickCVV() {
-    cvvField.focus();
-}
-
-cvvField.on('blur', function (event) {
-    if (event.error) {
-        document.getElementById('fieldCVVContainer').classList.add("Field--required");
-        document.getElementById('fieldCVVContainer').classList.add("hasError");
-        let error = event.error.message ? event.error.message : "Enter your credit card CVV."
-        document.getElementById('cvvErrorMsg').innerHTML = error
-    } else {
-        document.getElementById('fieldCVVContainer').classList.remove("Field--required");
-        document.getElementById('fieldCVVContainer').classList.remove("hasError");
-    }
-    document.getElementById('containerCVV').classList.remove("focus");
-})
-
-cvvField.on('focus', function (event) {
-    document.getElementById('containerCVV').classList.add("focus");
-})
-
-cvvField.on('autofilled', function (event) {
-    if (event.autofilled) {
-        document.getElementById('fieldCVVContainer').classList.add("autofilled");
-    } else {
-        document.getElementById('fieldCVVContainer').classList.remove("autofilled");
-    }
-})
 
 cvvField.on('change', function (event) {
     if (!event.error) {
@@ -338,6 +365,8 @@ cvvField.on('change', function (event) {
         document.getElementById('containerCVV').classList.remove("empty");
     }
 })
+
+// onBrand
 
 panField.on('brand', function (event) {
     let visa = document.getElementById('visa')
@@ -380,11 +409,11 @@ function showOnlyFlag(show, hide1, hide2, hide3) {
     hide3.style.display = "none"
 }
 
+// loader
+
 function loader(show) {
     document.getElementById("loader-example-6").style.visibility = show ? "visible" : "hidden";
     document.getElementById("customContainer").style.visibility = show ? "hidden" : "visible";
     document.getElementById("customContainer").style.opacity = show ? 0 : 1;
     document.getElementById("panOverlay").style.visibility = show ? "hidden" : "visible";
 }
-
-//registerClearBtn("example-6", [panField, cvvField, expirationField])
