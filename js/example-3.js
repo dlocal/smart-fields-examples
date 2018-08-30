@@ -19,6 +19,9 @@ const panExample3 = fieldsExample3.create('pan', {
                 color: "#1995ad"
             },
             iconColor: "#1995ad"
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: "4111 1111 1111 1111"
@@ -38,6 +41,9 @@ const expirationExample3 = fieldsExample3.create('expiration', {
             '::placeholder': {
                 color: "#1995ad"
             }
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: monthStr + "/" + year
@@ -55,6 +61,9 @@ const cvvExample3 = fieldsExample3.create('cvv', {
             '::placeholder': {
                 color: "#1995ad"
             }
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: "123"

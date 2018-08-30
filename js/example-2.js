@@ -19,6 +19,9 @@ const cardExample2 = fieldsExample2.create('card', {
                 color: "#21a35b"
             },
             iconColor: "#21a35b"
+        },
+        autofilled: {
+            color: "#f1d444"
         }
     }
 });
