@@ -62,6 +62,9 @@ const expirationExample5 = fieldsExample5.create('expiration', {
             '::placeholder': {
                 color: "#c1c1c1"
             }
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: monthStr + "/" + year
