@@ -1,4 +1,12 @@
-const panExample3 = fields.create('pan', {
+const fieldsExample3 = dlocalInstance.fields({
+    fonts: [{
+        cssSrc: 'https://rsms.me/inter/inter-ui.css'
+    }],
+    locale: 'en',
+    country: 'BR'
+});
+
+const panExample3 = fieldsExample3.create('pan', {
     style: {
         base: {
             fontSize: "16px",
@@ -18,7 +26,7 @@ const panExample3 = fields.create('pan', {
 
 
 
-const expirationExample3 = fields.create('expiration', {
+const expirationExample3 = fieldsExample3.create('expiration', {
     style: {
         base: {
             fontSize: "16px",
@@ -35,7 +43,7 @@ const expirationExample3 = fields.create('expiration', {
     placeholder: monthStr + "/" + year
 });
 
-const cvvExample3 = fields.create('cvv', {
+const cvvExample3 = fieldsExample3.create('cvv', {
     style: {
         base: {
             fontSize: "16px",

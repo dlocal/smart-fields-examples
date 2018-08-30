@@ -1,4 +1,12 @@
-const cardExample2 = fields.create('card', {
+const fieldsExample2 = dlocalInstance.fields({
+    fonts: [{
+        cssSrc: 'https://rsms.me/inter/inter-ui.css'
+    }],
+    locale: 'en',
+    country: 'BR'
+});
+
+const cardExample2 = fieldsExample2.create('card', {
     style: {
         base: {
             fontSize: "16px",

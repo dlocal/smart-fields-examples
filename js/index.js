@@ -1,13 +1,5 @@
 const dlocalInstance = dlocal('efba0f53-252d-4da2-806c-3cb694a1e2d8');
 
-const fields = dlocalInstance.fields({
-    fonts: [{
-        cssSrc: 'https://rsms.me/inter/inter-ui.css'
-    }],
-    locale: 'en',
-    country: 'BR'
-});
-
 const today = new Date();
 const month = today.getMonth() + 1
 const monthStr = month <= 9 ? "0" + month : month.toString();

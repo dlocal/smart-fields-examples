@@ -1,3 +1,11 @@
+const fieldsExample6 = dlocalInstance.fields({
+    fonts: [{
+        cssSrc: 'https://rsms.me/inter/inter-ui.css'
+    }],
+    locale: 'en',
+    country: 'BR'
+});
+
 // chek other elements of the form
 
 let name = document.getElementById('name')
@@ -86,7 +94,7 @@ function submit() {
 
 // config fields
 
-const panField = fields.create('pan', {
+const panField = fieldsExample6.create('pan', {
     style: {
         base: {
             fontSize: "15px",
@@ -111,7 +119,7 @@ const panField = fields.create('pan', {
     placeholder: "4111 1111 1111 1111"
 });
 
-const cvvField = fields.create('cvv', {
+const cvvField = fieldsExample6.create('cvv', {
     style: {
         base: {
             fontSize: "15px",
@@ -134,7 +142,7 @@ const cvvField = fields.create('cvv', {
 
 
 
-const expirationField = fields.create('expiration', {
+const expirationField = fieldsExample6.create('expiration', {
     style: {
         base: {
             fontSize: "15px",

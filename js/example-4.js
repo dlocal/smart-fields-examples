@@ -1,9 +1,17 @@
+const fieldsExample4 = dlocalInstance.fields({
+    fonts: [{
+        cssSrc: 'https://rsms.me/inter/inter-ui.css'
+    }],
+    locale: 'en',
+    country: 'BR'
+});
+
 var example4 = document.querySelector(".example-4");
 var form4 = example4.querySelector('form');
 var error4 = form4.querySelector('.error');
 var errorMessage4 = error4.querySelector('.message');
 
-const cardExample4 = fields.create('card', {
+const cardExample4 = fieldsExample4.create('card', {
     style: {
         base: {
             fontSize: "16px",
