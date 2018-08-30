@@ -30,6 +30,9 @@ const cardExample4 = fieldsExample4.create('card', {
             '::placeholder': {
                 color: "#c0670c"
             }
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     hideIcon: true

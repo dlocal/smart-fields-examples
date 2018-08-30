@@ -24,6 +24,9 @@ const panExample5 = fieldsExample5.create('pan', {
                 color: "#c1c1c1"
             },
             iconColor: "#c1c1c1"
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: "4111 1111 1111 1111"
