@@ -34,14 +34,14 @@ The form also collects other data outside of the payment form.
 - [JavaScript](js/example-4.js)
 - [CSS](css/example-4.css)
 
-Example 4 shows a form that displays the abailable installments for the example amount and uses the `card` SmartField. This example does not show the brand icon flag.
+Example 4 shows a form that displays the available installments for the example amount and uses the `card` SmartField. This example does not show the brand icon flag.
 
 ## Example 5
 
 - [JavaScript](js/example-5.js)
 - [CSS](css/example-5.css)
 
-Example 5 shows a form that displays the abailable installments for the example amount and uses `pan`, `expiration`, and `cvv` SmartFields with floating labels and custom placeholders.
+Example 5 shows a form that displays the available installments for the example amount and uses `pan`, `expiration`, and `cvv` SmartFields with floating labels and custom placeholders.
 
 ## Example 6
 

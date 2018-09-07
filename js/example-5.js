@@ -1,9 +1,17 @@
+const fieldsExample5 = dlocalInstance.fields({
+    fonts: [{
+        cssSrc: 'https://rsms.me/inter/inter-ui.css'
+    }],
+    locale: 'en',
+    country: 'BR'
+});
+
 var example5 = document.querySelector(".example-5");
 var form5 = example5.querySelector('form');
 var error5 = form5.querySelector('.error');
 var errorMessage5 = error5.querySelector('.message');
 
-const panExample5 = fields.create('pan', {
+const panExample5 = fieldsExample5.create('pan', {
     style: {
         base: {
             fontSize: "16px",
@@ -16,6 +24,9 @@ const panExample5 = fields.create('pan', {
                 color: "#c1c1c1"
             },
             iconColor: "#c1c1c1"
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: "4111 1111 1111 1111"
@@ -39,7 +50,7 @@ panExample5.on('brand', function (event) {
     }
 });
 
-const expirationExample5 = fields.create('expiration', {
+const expirationExample5 = fieldsExample5.create('expiration', {
     style: {
         base: {
             fontSize: "16px",
@@ -51,12 +62,15 @@ const expirationExample5 = fields.create('expiration', {
             '::placeholder': {
                 color: "#c1c1c1"
             }
+        },
+        autofilled: {
+            color: "#000000"
         }
     },
     placeholder: monthStr + "/" + year
 });
 
-const cvvExample5 = fields.create('cvv', {
+const cvvExample5 = fieldsExample5.create('cvv', {
     style: {
         base: {
             fontSize: "16px",

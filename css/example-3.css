@@ -25,6 +25,17 @@
     margin-right: 15px;
 }
 
+.example.example-3 .field .autofilled {
+    background-color: #fefde5 !important;
+}
+
+.example.example-3 input:-webkit-autofill,
+.example.example-3 input:-webkit-autofill:hover,
+.example.example-3 input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #fefde5 inset;
+    box-shadow: 0 0 0px 1000px #fefde5 inset;
+}
+
 .example.example-3 .field+.field {
     border-top: 1px solid #1995ad;
 }
@@ -80,16 +91,6 @@
     appearance: none;
     outline: none;
     border-style: none;
-}
-
-.example.example-3 input:-webkit-autofill {
-    -webkit-text-fill-color: #f5e636;
-    transition: background-color 100000000s;
-    -webkit-animation: 1ms void-animation-out;
-}
-
-.example.example-3 .DlocalField--webkit-autofill {
-    background: transparent !important;
 }
 
 .example.example-3 .DlocalField {

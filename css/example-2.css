@@ -55,7 +55,7 @@
 }
 
 #example-2-card {
-    width: calc(100% - 15px);
+    width: calc(100% - 18px);
 }
 
 .example.example-2 label {
@@ -83,7 +83,7 @@
     -webkit-animation: 1ms void-animation-out;
 }
 
-.example.example-2 .DlocalField--webkit-autofill {
+.example.example-2 .DlocalField--autofill {
     background: transparent !important;
 }
 
@@ -160,4 +160,8 @@
 
 .example.example-2 .success .reset path {
     fill: #13ce66;
+}
+
+.example.example-2 .field .autofilled {
+    background-color: unset;
 }
