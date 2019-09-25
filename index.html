@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="./css/base.css">
 
     <!-- CSS for each example: -->
-    <link rel="stylesheet" href="css/example-1.css">
-    <link rel="stylesheet" href="css/example-2.css">
+    <link rel="stylesheet" href="css/example-6.css">
+    <link rel="stylesheet" href="css/example-5.css">
     <link rel="stylesheet" href="css/example-3.css">
     <link rel="stylesheet" href="css/example-4.css">
-    <link rel="stylesheet" href="css/example-5.css">
-    <link rel="stylesheet" href="css/example-6.css">
+    <link rel="stylesheet" href="css/example-1.css">
+    <link rel="stylesheet" href="css/example-2.css">
 
     <!-- checkboxs and radiobox CSS used in example 6 -->
     <link rel="stylesheet" href="./css/checkbox.css">
@@ -49,18 +49,44 @@
 
                 <!--Example 1-->
 
-                <section class="row example example-1 submitting" id="example-1">
+                <section class="row example example-1 submitting">
                     <div class="caption-top">
                         <span id="example-1.caption.example-number" class="no-charge">Example 1</span>
                     </div>
                     <form id="fields-form-example-1">
-                        <fieldset>
-                            <legend class="payment-request-available" id="enter_card_manually" style="display: block">Enter card details</legend>
-                            <div class="container">
-                                <div id="example-1-card"></div>
-                                <button type="submit" id="example-1.form.donate_button">Donate</button>
-                            </div>
-                        </fieldset>
+
+                        <div class="fieldset">
+                            <legend class="example-1-title">Add Payment Method</legend>
+                            <fieldset>
+                                <div class="field">
+                                    <label for="example5-name">NAME</label>
+                                    <input id="example-1-name" class="input" type="text" placeholder="John Doe" required autocomplete="name">
+                                </div>
+                                <div class="field">
+                                    <label for="example-1-pan">CARD NUMBER</label>
+                                    <div id="example-1-pan"></div>
+                                </div>
+                                <div class="container">
+                                    <div class="field half">
+                                        <label for="example-1-expiration">EXPIRATION</label>
+                                        <div id="example-1-expiration"></div>
+                                    </div>
+                                    <div class="field half">
+                                        <label for="example-1-cvv">SECURITY CODE</label>
+                                        <div id="example-1-cvv"></div>
+                                    </div>
+                                </div>
+                                <div class="field select-wrapper">
+                                    <label for="example-1-installments">INSTALLMENTS</label>
+                                    <span>▼</span>
+                                    <select for="example-1-installments" class="installments" disabled>
+                                        <option value="">-</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <button type="submit" id="example-1.form.pay_button">BUY</button>
+                        </div>
+
                         <div class="error" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
                                 <path class="base" fill="#000" d="M8.5,17 C3.80557963,17 0,13.1944204 0,8.5 C0,3.80557963 3.80557963,0 8.5,0 C13.1944204,0 17,3.80557963 17,8.5 C17,13.1944204 13.1944204,17 8.5,17 Z"></path>
@@ -99,63 +125,103 @@
                             <span id="example-1.caption.view_source">View source on GitHub</span>
                         </a>
                     </div>
-
                 </section>
 
                 <!--Example 2-->
 
-                <section class="row example example-2 submitting">
+                <section class="row example example-2">
+                    <div id="loader-example-2" class="loader"></div>
                     <div class="caption-top">
                         <span id="example-2.caption.example-number" class="no-charge">Example 2</span>
                     </div>
-                    <form id="fields-form-example-2">
+                    <div id="fields-form-example-2">
                         <fieldset>
-                            <div class="field">
-                                <label for="example-2-name">Name</label>
-                                <input id="example-2-name" type="text" placeholder="John Doe" required autocomplete="name">
-                            </div>
-                            <div class="field">
-                                <label for="example-2-email">Email</label>
-                                <input id="example-2-email" type="email" placeholder="johndoe@gmail.com" required autocomplete="email">
-                            </div>
-                            <div class="field">
-                                <label for="example-2-phone">Phone</label>
-                                <input id="example-2-phone" type="tel" placeholder="(111) 222-0123" required autocomplete="tel">
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <div class="field">
-                                <label for="example-2-address">Address</label>
-                                <input id="example-2-address" type="text" placeholder="Rua Leopoldo Miguez, 99 - Copacabana" required autocomplete="address-level1">
-                            </div>
-                            <div class="field">
-                                <div class="half">
-                                    <label for="example-2-city">City</label>
-                                    <input id="example-2-city" type="text" placeholder="Rio de Janeiro" required autocomplete="address-level2">
-                                </div>
-                                <div class="half">
-                                    <label for="example-2-state">State</label>
-                                    <input id="example-2-state" type="text" placeholder="Rio de Janeiro" required autocomplete="address-level3">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="half">
-                                    <label for="example-2-country">Country</label>
-                                    <input id="example-2-country" type="text" placeholder="Brazil" required autocomplete="shipping country">
-                                </div>
-                                <div class="half">
-                                    <label for="example-2-zip">ZIP</label>
-                                    <input id="example-2-zip" type="text" placeholder="22040-002" required autocomplete="shipping postal-code">
-                                </div>
-                            </div>
+                            <div class="container">
+                                <div id="customContainer" class="exampleX custom">
+                                    <div class="containerX">
+                                        <div class="field newPayment">
+                                            <label class="radiocontainer">New Payment Card
+                                                <input type="radio" checked="checked" name="radio">
+                                                <span class="radiomark"></span>
+                                            </label>
+                                            <img id="visa" alt="visa" class="brand-img visa first" src="img/visa.svg" />
+                                            <img id="mastercard" alt="mastercard" class="brand-img mastercard" src="img/master.svg" />
+                                            <img id="amex" alt="amex" class="brand-img amex" src="img/amex.svg" />
+                                            <img id="discover" alt="discover" class="brand-img discover" src="img/discover.svg" />
+                                        </div>
+                                        <hr>
+                                        <div id="fieldPanContainer" class="field half fieldFloating">
+                                            <div id="containerPan" class="input empty" onclick="clickPan()"></div>
+                                            <label for="containerPan" onclick="clickPan()">Card Number</label>
+                                            <div id="panOverlay" class="overlay" onclick="clickPan()"></div>
+                                            <div class="errorMsgContainer">
+                                                <span id="panErrorMsg" class="helpError">Enter your credit card number.</span>
+                                            </div>
+                                        </div>
+                                        <div id="fieldExpirationContainer" class="field cuarter fieldFloating">
+                                            <div id="containerExpiration" class="input empty" onclick="clickExpiration()"></div>
+                                            <label for="containerExpiration" onclick="clickExpiration()">MM/YY</label>
+                                            <div class="errorMsgContainer">
+                                                <span id="expirationErrorMsg" class="helpError">Enter your credit card expiration.</span>
+                                            </div>
+                                        </div>
+                                        <div id="fieldCVVContainer" class="field cuarter fieldFloating">
+                                            <div id="containerCVV" class="input empty" onclick="clickCVV()"></div>
+                                            <label for="containerCVV" onclick="clickCVV()">CVV</label>
+                                            <div class="errorMsgContainer">
+                                                <span id="cvvErrorMsg" class="helpError">Enter your credit card CVV.</span>
+                                            </div>
+                                            <div class="tooltipContainer">
+                                                <img id="cvvTooltip" alt="cvv" class="tooltipImage" src="img/question.svg" />
+                                                <div class="tooltipInner">
+                                                    <img class="tooltipInnerImage" src="img/security_code.svg">
+                                                </div>
+                                            </div>
 
-                        </fieldset>
-                        <fieldset>
-                            <div class="field container">
-                                <div id="example-2-card"></div>
+                                        </div>
+                                        <div class="field fieldFloating" id="nameContainer">
+
+                                            <input id="name" type="text" placeholder="John Doe" required class="input empty" autocomplete="cc-name" />
+                                            <label for="name">Cardholder Name</label>
+                                            <div class="errorMsgContainer">
+                                                <span class="helpError">Enter your name exactly as it appears on your card.</span>
+                                            </div>
+                                        </div>
+                                        <div class="field half fieldFloating" id="countryContainer">
+                                            <select id="country" required class="input empty">
+                                                <option value="brazil">Brazil</option>
+                                            </select>
+                                            <label for="country">Country</label>
+                                            <div class="errorMsgContainer">
+                                                <span class="helpError">Select a country.</span>
+                                            </div>
+                                        </div>
+                                        <div class="field half fieldFloating" id="cpf_cnpjContainer">
+                                            <input id="cpf_cnpj" type="text" placeholder="158.611.782-32" class="input empty" required/>
+                                            <label for="cpf_cnpj">CPF / CNPJ</label>
+                                            <div class="errorMsgContainer">
+                                                <span class="helpError">Enter your CPF / CNPJ.</span>
+                                            </div>
+                                        </div>
+                                        <div class="field fieldCheck">
+                                            <label class="radiocontainer">Remember this card
+                                                <input id="remember" type="checkbox" checked="checked" name="radio">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <button onclick="submit()">Complete Payment</button>
+                                        <div class="terms">
+                                            <label>By completing your purchase, you agree to these
+                                                <a href="#" target="_blank">Terms of Service</a>.</label>
+                                        </div>
+                                        <div class="secureConnection">
+                                            <img alt="lock" src="img/lock.png" />
+                                            <label>Secure Connection</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </fieldset>
-                        <button type="submit" id="example-2.form.pay_button">Pay $50</button>
                         <div class="error" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
                                 <path class="base" fill="#000" d="M8.5,17 C3.80557963,17 0,13.1944204 0,8.5 C0,3.80557963 3.80557963,0 8.5,0 C13.1944204,0 17,3.80557963 17,8.5 C17,13.1944204 13.1944204,17 8.5,17 Z"></path>
@@ -163,7 +229,7 @@
                             </svg>
                             <span class="message"></span>
                         </div>
-                    </form>
+                    </div>
                     <div class="success">
                         <div class="icon">
                             <svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -357,39 +423,53 @@
                         <span id="example-5.caption.example-number" class="no-charge">Example 5</span>
                     </div>
                     <form id="fields-form-example-5">
+                        <fieldset>
+                            <div class="field">
+                                <label for="example-5-name">Name</label>
+                                <input id="example-5-name" type="text" placeholder="John Doe" required autocomplete="name">
+                            </div>
+                            <div class="field">
+                                <label for="example-5-email">Email</label>
+                                <input id="example-5-email" type="email" placeholder="johndoe@gmail.com" required autocomplete="email">
+                            </div>
+                            <div class="field">
+                                <label for="example-5-phone">Phone</label>
+                                <input id="example-5-phone" type="tel" placeholder="(111) 222-0123" required autocomplete="tel">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="field">
+                                <label for="example-5-address">Address</label>
+                                <input id="example-5-address" type="text" placeholder="Rua Leopoldo Miguez, 99 - Copacabana" required autocomplete="address-level1">
+                            </div>
+                            <div class="field">
+                                <div class="half">
+                                    <label for="example-5-city">City</label>
+                                    <input id="example-5-city" type="text" placeholder="Rio de Janeiro" required autocomplete="address-level2">
+                                </div>
+                                <div class="half">
+                                    <label for="example-5-state">State</label>
+                                    <input id="example-5-state" type="text" placeholder="Rio de Janeiro" required autocomplete="address-level3">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="half">
+                                    <label for="example-5-country">Country</label>
+                                    <input id="example-5-country" type="text" placeholder="Brazil" required autocomplete="shipping country">
+                                </div>
+                                <div class="half">
+                                    <label for="example-5-zip">ZIP</label>
+                                    <input id="example-5-zip" type="text" placeholder="22040-002" required autocomplete="shipping postal-code">
+                                </div>
+                            </div>
 
-                        <div class="fieldset">
-                            <legend class="example-5-title">Add Payment Method</legend>
-                            <fieldset>
-                                <div class="field">
-                                    <label for="example5-name">NAME</label>
-                                    <input id="example-5-name" class="input" type="text" placeholder="John Doe" required autocomplete="name">
-                                </div>
-                                <div class="field">
-                                    <label for="example-5-pan">CARD NUMBER</label>
-                                    <div id="example-5-pan"></div>
-                                </div>
-                                <div class="container">
-                                    <div class="field half">
-                                        <label for="example-5-expiration">EXPIRATION</label>
-                                        <div id="example-5-expiration"></div>
-                                    </div>
-                                    <div class="field half">
-                                        <label for="example-5-cvv">SECURITY CODE</label>
-                                        <div id="example-5-cvv"></div>
-                                    </div>
-                                </div>
-                                <div class="field select-wrapper">
-                                    <label for="example-5-installments">INSTALLMENTS</label>
-                                    <span>▼</span>
-                                    <select for="example-5-installments" class="installments" disabled>
-                                        <option value="">-</option>
-                                    </select>
-                                </div>
-                            </fieldset>
-                            <button type="submit" id="example-5.form.pay_button">BUY</button>
-                        </div>
-
+                        </fieldset>
+                        <fieldset>
+                            <div class="field container">
+                                <div id="example-5-card"></div>
+                            </div>
+                        </fieldset>
+                        <button type="submit" id="example-5.form.pay_button">Pay $50</button>
                         <div class="error" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
                                 <path class="base" fill="#000" d="M8.5,17 C3.80557963,17 0,13.1944204 0,8.5 C0,3.80557963 3.80557963,0 8.5,0 C13.1944204,0 17,3.80557963 17,8.5 C17,13.1944204 13.1944204,17 8.5,17 Z"></path>
@@ -432,97 +512,16 @@
 
                 <!--Example 6-->
 
-                <section class="row example example-6">
-                    <div id="loader-example-6" class="loader"></div>
+                <section class="row example example-6 submitting" id="example-6">
                     <div class="caption-top">
                         <span id="example-6.caption.example-number" class="no-charge">Example 6</span>
                     </div>
-                    <div id="fields-form-example-6">
+                    <form id="fields-form-example-6">
                         <fieldset>
+                            <legend class="payment-request-available" id="enter_card_manually" style="display: block">Enter card details</legend>
                             <div class="container">
-                                <div id="customContainer" class="exampleX custom">
-                                    <div class="containerX">
-                                        <div class="field newPayment">
-                                            <label class="radiocontainer">New Payment Card
-                                                <input type="radio" checked="checked" name="radio">
-                                                <span class="radiomark"></span>
-                                            </label>
-                                            <img id="visa" alt="visa" class="brand-img visa first" src="img/visa.svg" />
-                                            <img id="mastercard" alt="mastercard" class="brand-img mastercard" src="img/master.svg" />
-                                            <img id="amex" alt="amex" class="brand-img amex" src="img/amex.svg" />
-                                            <img id="discover" alt="discover" class="brand-img discover" src="img/discover.svg" />
-                                        </div>
-                                        <hr>
-                                        <div id="fieldPanContainer" class="field half fieldFloating">
-                                            <div id="containerPan" class="input empty" onclick="clickPan()"></div>
-                                            <label for="containerPan" onclick="clickPan()">Card Number</label>
-                                            <div id="panOverlay" class="overlay" onclick="clickPan()"></div>
-                                            <div class="errorMsgContainer">
-                                                <span id="panErrorMsg" class="helpError">Enter your credit card number.</span>
-                                            </div>
-                                        </div>
-                                        <div id="fieldExpirationContainer" class="field cuarter fieldFloating">
-                                            <div id="containerExpiration" class="input empty" onclick="clickExpiration()"></div>
-                                            <label for="containerExpiration" onclick="clickExpiration()">MM/YY</label>
-                                            <div class="errorMsgContainer">
-                                                <span id="expirationErrorMsg" class="helpError">Enter your credit card expiration.</span>
-                                            </div>
-                                        </div>
-                                        <div id="fieldCVVContainer" class="field cuarter fieldFloating">
-                                            <div id="containerCVV" class="input empty" onclick="clickCVV()"></div>
-                                            <label for="containerCVV" onclick="clickCVV()">CVV</label>
-                                            <div class="errorMsgContainer">
-                                                <span id="cvvErrorMsg" class="helpError">Enter your credit card CVV.</span>
-                                            </div>
-                                            <div class="tooltipContainer">
-                                                <img id="cvvTooltip" alt="cvv" class="tooltipImage" src="img/question.svg" />
-                                                <div class="tooltipInner">
-                                                    <img class="tooltipInnerImage" src="img/security_code.svg">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="field fieldFloating" id="nameContainer">
-
-                                            <input id="name" type="text" placeholder="John Doe" required class="input empty" autocomplete="cc-name" />
-                                            <label for="name">Cardholder Name</label>
-                                            <div class="errorMsgContainer">
-                                                <span class="helpError">Enter your name exactly as it appears on your card.</span>
-                                            </div>
-                                        </div>
-                                        <div class="field half fieldFloating" id="countryContainer">
-                                            <select id="country" required class="input empty">
-                                                <option value="brazil">Brazil</option>
-                                            </select>
-                                            <label for="country">Country</label>
-                                            <div class="errorMsgContainer">
-                                                <span class="helpError">Select a country.</span>
-                                            </div>
-                                        </div>
-                                        <div class="field half fieldFloating" id="cpf_cnpjContainer">
-                                            <input id="cpf_cnpj" type="text" placeholder="158.611.782-32" class="input empty" required/>
-                                            <label for="cpf_cnpj">CPF / CNPJ</label>
-                                            <div class="errorMsgContainer">
-                                                <span class="helpError">Enter your CPF / CNPJ.</span>
-                                            </div>
-                                        </div>
-                                        <div class="field fieldCheck">
-                                            <label class="radiocontainer">Remember this card
-                                                <input id="remember" type="checkbox" checked="checked" name="radio">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <button onclick="submit()">Complete Payment</button>
-                                        <div class="terms">
-                                            <label>By completing your purchase, you agree to these
-                                                <a href="#" target="_blank">Terms of Service</a>.</label>
-                                        </div>
-                                        <div class="secureConnection">
-                                            <img alt="lock" src="img/lock.png" />
-                                            <label>Secure Connection</label>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="example-6-card"></div>
+                                <button type="submit" id="example-6.form.donate_button">Donate</button>
                             </div>
                         </fieldset>
                         <div class="error" role="alert">
@@ -532,7 +531,7 @@
                             </svg>
                             <span class="message"></span>
                         </div>
-                    </div>
+                    </form>
                     <div class="success">
                         <div class="icon">
                             <svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -563,7 +562,9 @@
                             <span id="example-6.caption.view_source">View source on GitHub</span>
                         </a>
                     </div>
+
                 </section>
+              
             </div>
 
             <a href="https://github.com/dlocal/smart-fields-examples" class="github-corner" aria-label="View source on Github">
@@ -611,12 +612,12 @@
     <script src="https://js-sandbox.dlocal.com"></script>
     <!-- Scripts for each example: -->
     <script src="js/index.js"></script>
-    <script src="js/example-1.js"></script>
-    <script src="js/example-2.js"></script>
+    <script src="js/example-6.js"></script>
+    <script src="js/example-5.js"></script>
     <script src="js/example-3.js"></script>
     <script src="js/example-4.js"></script>
-    <script src="js/example-5.js"></script>
-    <script src="js/example-6.js"></script>
+    <script src="js/example-1.js"></script>
+    <script src="js/example-2.js"></script>
 </body>
 
 </html>
