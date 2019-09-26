@@ -453,6 +453,10 @@ resetButton.addEventListener('click', function (e) {
         field.clear();
     });
 
+    document.getElementById('fieldCVVContainer').classList.remove("autofilled");
+    document.getElementById('fieldExpirationContainer').classList.remove("autofilled");
+    document.getElementById('fieldPanContainer').classList.remove("autofilled");
+    document.getElementById('nameContainer').classList.remove("autofilled");
     example.classList.remove('submitted');
 
 });
