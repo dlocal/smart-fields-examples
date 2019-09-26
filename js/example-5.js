@@ -48,14 +48,10 @@ document.getElementById('fields-form-example-5').onsubmit = function (e) {
         triggerBrowserValidation(form);
         return;
     }
-    if (!areExample5FieldsCompleated) {
-        if (!errorMessage.innerText) {
-            error.classList.add('visible');
-            errorMessage.innerText = 'Complete credit card data.';
-        }
-
+    if (errorMessage.innerText) {
         return;
     }
+
     // Show a loading screen...
     example.classList.add('submitting');
     dlocalInstance.createToken(cardExample5, {
@@ -81,10 +77,7 @@ document.getElementById('fields-form-example-5').onsubmit = function (e) {
 }
 
 
-let areExample5FieldsCompleated = false;
 registerClearBtn("example-5", [cardExample5])
-registerEvents("example-5", [cardExample5], ["example-5-card"], function (compleated) {
-    areExample5FieldsCompleated = compleated;
-})
+registerEvents("example-5", [cardExample5], ["example-5-card"])
 
 cardExample5.mount(document.getElementById('example-5-card'));

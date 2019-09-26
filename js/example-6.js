@@ -32,11 +32,7 @@ document.getElementById('fields-form-example-6').onsubmit = function (e) {
     var error = form.querySelector('.error');
     var errorMessage = error.querySelector('.message');
 
-    if (!areExample6FieldsCompleated) {
-        if (!errorMessage.innerText) {
-            error.classList.add('visible');
-            errorMessage.innerText = 'Complete credit card data.';
-        }
+    if (errorMessage.innerText) {
         return;
     }
 
@@ -59,11 +55,9 @@ document.getElementById('fields-form-example-6').onsubmit = function (e) {
 }
 
 
-let areExample6FieldsCompleated = false;
+
 registerClearBtn("example-6", [cardExample6])
-registerEvents("example-6", [cardExample6], ["example-6-card"], function (compleated) {
-    areExample6FieldsCompleated = compleated;
-})
+registerEvents("example-6", [cardExample6], ["example-6-card"])
 
 
 cardExample6.mount(document.getElementById('example-6-card'));

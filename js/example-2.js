@@ -61,20 +61,23 @@ function submit() {
     const isNameComplete = checkRequired(name, nameContainer);
     const isCountryComplete = checkRequired(country, countryContainer);
     const isCPF_CNPJComplete = checkRequired(cpf_cnpj, cpf_cnpjContainer);
-    if (!isPanComplete) {
+    const isPanOk = !isPanEmpty && !panHasError;
+    const isExpirationOk = !isExpirationEmpty && !expirationHasError;
+    const isCvvOk = !isCvvEmpty && !cvvHasError;
+    if (!isPanOk) {
         document.getElementById('fieldPanContainer').classList.add("Field--required");
         document.getElementById('fieldPanContainer').classList.add("hasError");
     }
-    if (!isExpirationComplete) {
+    if (!isExpirationOk) {
         document.getElementById('fieldExpirationContainer').classList.add("Field--required");
         document.getElementById('fieldExpirationContainer').classList.add("hasError");
     }
-    if (!isCVVComplete) {
+    if (!isCvvOk) {
         document.getElementById('fieldCVVContainer').classList.add("Field--required");
         document.getElementById('fieldCVVContainer').classList.add("hasError");
     }
 
-    if (!isPanComplete || !isExpirationComplete || !isCVVComplete || !isNameComplete || !isCountryComplete || !
+    if (!isPanOk || !isExpirationOk || !isCvvOk || !isNameComplete || !isCountryComplete || !
         isCPF_CNPJComplete) {
         return;
     }
@@ -195,31 +198,6 @@ cvvField.on('ready', function (event) {
     }
 });
 
-//onComplete
-
-let isPanComplete = false;
-panField.on('complete', function (event) {
-    isPanComplete = event.complete;
-    if (isPanComplete) {
-        expirationField.focus();
-    }
-})
-
-let isExpirationComplete = false;
-expirationField.on('complete', function (event) {
-    isExpirationComplete = event.complete;
-    if (isExpirationComplete) {
-        cvvField.focus();
-    }
-})
-
-let isCVVComplete = false;
-cvvField.on('complete', function (event) {
-    isCVVComplete = event.complete;
-    if (isCVVComplete) {
-        name.focus();
-    }
-})
 
 // onClick
 
@@ -236,16 +214,24 @@ function clickCVV() {
 }
 
 // onBlur
-
+let isPanEmpty = true;
+let panHasError = false;
 panField.on('blur', function (event) {
     if (event.empty) {
+        isPanEmpty = true;
         document.getElementById('panOverlay').style.visibility = "visible"
-    } else if (event.error) {
+    } else {
+        isPanEmpty = false;
+    }
+
+    if (event.error) {
+        panHasError = true;
         document.getElementById('fieldPanContainer').classList.add("Field--required");
         document.getElementById('fieldPanContainer').classList.add("hasError");
         let error = event.error.message ? event.error.message : "Enter your credit card number."
         document.getElementById('panErrorMsg').innerHTML = error
     } else {
+        panHasError = false;
         document.getElementById('fieldPanContainer').classList.remove("Field--required");
         document.getElementById('fieldPanContainer').classList.remove("hasError");
     }
@@ -253,26 +239,36 @@ panField.on('blur', function (event) {
     document.getElementById('containerPan').classList.remove("focus");
 })
 
+let isExpirationEmpty = true;
+let expirationHasError = false;
 expirationField.on('blur', function (event) {
+    isExpirationEmpty = event.empty;
     if (event.error) {
+        expirationHasError = true;
         document.getElementById('fieldExpirationContainer').classList.add("Field--required");
         document.getElementById('fieldExpirationContainer').classList.add("hasError");
         let error = event.error.message ? event.error.message : "Enter your credit card expiration."
         document.getElementById('expirationErrorMsg').innerHTML = error
     } else {
+        expirationHasError = false;
         document.getElementById('fieldExpirationContainer').classList.remove("Field--required");
         document.getElementById('fieldExpirationContainer').classList.remove("hasError");
     }
     document.getElementById('containerExpiration').classList.remove("focus");
 })
 
+let isCvvEmpty = true;
+let cvvHasError = false;
 cvvField.on('blur', function (event) {
+    isCvvEmpty = event.empty;
     if (event.error) {
+        cvvHasError = true;
         document.getElementById('fieldCVVContainer').classList.add("Field--required");
         document.getElementById('fieldCVVContainer').classList.add("hasError");
         let error = event.error.message ? event.error.message : "Enter your credit card CVV."
         document.getElementById('cvvErrorMsg').innerHTML = error
     } else {
+        cvvHasError = false;
         document.getElementById('fieldCVVContainer').classList.remove("Field--required");
         document.getElementById('fieldCVVContainer').classList.remove("hasError");
     }
@@ -323,15 +319,19 @@ cvvField.on('autofilled', function (event) {
 // onChange
 
 panField.on('change', function (event) {
+
     if (!event.error) {
+        panHasError = false;
         document.getElementById('fieldPanContainer').classList.remove("hasError");
         document.getElementById('fieldPanContainer').classList.remove("Field--required");
     } else {
+        panHasError = true;
         document.getElementById('fieldPanContainer').classList.add("hasError");
         document.getElementById('fieldPanContainer').classList.add("Field--required");
         let error = event.error.message ? event.error.message : "Enter your credit card number."
         document.getElementById('panErrorMsg').innerHTML = error
     }
+    isPanEmpty = event.empty;
     if (event.empty) {
         document.getElementById('containerPan').classList.add("empty");
     } else {
@@ -341,14 +341,17 @@ panField.on('change', function (event) {
 
 expirationField.on('change', function (event) {
     if (!event.error) {
+        expirationHasError = false;
         document.getElementById('fieldExpirationContainer').classList.remove("Field--required");
         document.getElementById('fieldExpirationContainer').classList.remove("hasError");
     } else {
+        expirationHasError = true;
         document.getElementById('fieldExpirationContainer').classList.add("Field--required");
         document.getElementById('fieldExpirationContainer').classList.add("hasError");
         let error = event.error.message ? event.error.message : "Enter your credit card expiration."
         document.getElementById('expirationErrorMsg').innerHTML = error
     }
+    isExpirationEmpty = event.empty;
     if (event.empty) {
         document.getElementById('containerExpiration').classList.add("empty");
     } else {
@@ -359,14 +362,17 @@ expirationField.on('change', function (event) {
 
 cvvField.on('change', function (event) {
     if (!event.error) {
+        cvvHasError = false;
         document.getElementById('fieldCVVContainer').classList.remove("Field--required");
         document.getElementById('fieldCVVContainer').classList.remove("hasError");
     } else {
+        cvvHasError = true;
         document.getElementById('fieldCVVContainer').classList.add("Field--required");
         document.getElementById('fieldCVVContainer').classList.add("hasError");
         let error = event.error.message ? event.error.message : "Enter your credit card CVV."
         document.getElementById('cvvErrorMsg').innerHTML = error
     }
+    isCvvEmpty = event.empty;
     if (event.empty) {
         document.getElementById('containerCVV').classList.add("empty");
     } else {
@@ -425,3 +431,28 @@ function loader(show) {
     document.getElementById("customContainer").style.opacity = show ? 0 : 1;
     document.getElementById("panOverlay").style.visibility = show ? "hidden" : "visible";
 }
+
+
+const fields = [panField, expirationField, cvvField]
+const inputs = [name, country, cpf_cnpj]
+let formClass = '.example-2'
+let example = document.querySelector(formClass);
+
+let resetButton = example.querySelector('a.reset');
+//let error = form.querySelector('.error');
+
+resetButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    inputs.forEach(function (input) {
+        input.value = ''
+    });
+
+    // Clear each Smart-Field.
+    fields.forEach(function (field) {
+        field.clear();
+    });
+
+    example.classList.remove('submitted');
+
+});

@@ -58,12 +58,7 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
         triggerBrowserValidation(form4);
         return;
     }
-    if (!areExample4FieldsCompleated) {
-        if (!errorMessage4.innerText) {
-            error4.classList.add('visible');
-            errorMessage4.innerText = 'Complete credit card data.';
-        }
-
+    if (errorMessage4.innerText) {
         return;
     }
     // Show a loading screen...
@@ -84,11 +79,8 @@ document.getElementById('fields-form-example-4').onsubmit = function (e) {
 
 }
 
-let areExample4FieldsCompleated = false;
 registerClearBtn("example-4", [cardExample4])
-registerEvents("example-4", [cardExample4], ["example-4-card"], function (compleated) {
-    areExample4FieldsCompleated = compleated;
-})
+registerEvents("example-4", [cardExample4], ["example-4-card"])
 
 cardExample4.mount(document.getElementById('example-4-card'));
 

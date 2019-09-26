@@ -90,12 +90,7 @@ document.getElementById('fields-form-example-3').onsubmit = function (e) {
         triggerBrowserValidation(form);
         return;
     }
-    if (!areExample3FieldsCompleated) {
-        if (!errorMessage.innerText) {
-            error.classList.add('visible');
-            errorMessage.innerText = 'Complete credit card data.';
-        }
-
+    if (errorMessage.innerText) {
         return;
     }
     // Show a loading screen...
@@ -122,11 +117,8 @@ document.getElementById('fields-form-example-3').onsubmit = function (e) {
 
 }
 
-let areExample3FieldsCompleated = false;
 registerClearBtn("example-3", [panExample3, expirationExample3, cvvExample3])
-registerEvents("example-3", [panExample3, expirationExample3, cvvExample3], ["example-3-pan", "example-3-expiration", "example-3-cvv"], function (compleated) {
-    areExample3FieldsCompleated = compleated;
-})
+registerEvents("example-3", [panExample3, expirationExample3, cvvExample3])
 
 panExample3.mount(document.getElementById('example-3-pan'));
 expirationExample3.mount(document.getElementById('example-3-expiration'));

@@ -483,6 +483,7 @@ LOADER
     0% {
         -webkit-transform: rotate(0deg);
     }
+
     100% {
         -webkit-transform: rotate(360deg);
     }
@@ -492,6 +493,7 @@ LOADER
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -512,6 +514,7 @@ LOADER
         bottom: -100px;
         opacity: 0
     }
+
     to {
         bottom: 0px;
         opacity: 1
@@ -523,6 +526,7 @@ LOADER
         bottom: -100px;
         opacity: 0
     }
+
     to {
         bottom: 0;
         opacity: 1
@@ -550,34 +554,43 @@ LOADER
         width: fit-content;
         margin-left: 298px;
     }
+
     .example.example-2 .exampleX {
         height: fit-content;
     }
+
     .example.example-2 .custom button {
         margin-bottom: 20px;
     }
+
     .example.example-2 .terms {
         margin-bottom: 20px;
     }
+
     .example.example-2 .field {
         width: calc(100% - 13px);
     }
+
     .example.example-2 .field.field.half {
         width: calc(100% - 13px);
     }
+
     .example.example-2 .field.half+.half {
         margin-left: 0px;
         margin-right: 0px;
     }
+
     .example.example-2 .field.cuarter {
         width: calc(50% - 13px);
     }
+
     .example.example-2 .terms {
         margin-top: 0px;
         margin-left: 0px;
         float: left;
         width: 50%;
     }
+
     .example.example-2 .secureConnection {
         float: left;
         margin-left: 25px;
@@ -589,21 +602,26 @@ LOADER
     .example.example-2 .newPayment label {
         width: 100%;
     }
+
     .example.example-2 .brand-img.visa {
         margin-left: 33px;
     }
+
     .example.example-2 .field.newPayment {
         margin-bottom: 30px;
     }
+
     .example.example-2 .secureConnection {
         float: none;
         width: fit-content;
         margin-left: 0px;
     }
+
     .example.example-2 .terms {
         margin-left: 0px;
         width: 100%;
     }
+
     .example.example-2 #customContainer {
         border-radius: unset;
         box-shadow: none;
@@ -612,35 +630,44 @@ LOADER
         padding-left: 10px;
         padding-right: 10px;
     }
+
     .example.example-2 .exampleX {
         width: 100%;
         border: none;
         margin-top: unset;
         margin-bottom: unset;
     }
+
     .example.example-2 .containerX {
         margin-left: 0px;
     }
+
     .example.example-2 .field.field.half {
         width: 100%;
         margin-right: 0px;
     }
+
     .example.example-2 .field.cuarter {
         width: calc(50% - 6px);
     }
+
     .example.example-2 .field {
         width: 100%;
     }
+
     .example.example-2 .tooltipInner {
         left: -102px;
     }
+
     .example.example-2 .custom button {
         width: 100%;
     }
+
     .example.example-2 .custom select {
         margin-left: 0px;
         width: 100%;
     }
+
     .example.example-2 .custom hr {
         width: calc(100% + 30px);
         margin-left: -13px;
@@ -651,13 +678,16 @@ LOADER
     .example.example-2 .brand-img.mastercard {
         margin-right: 70px;
     }
+
     .example.example-2 .brand-img.amex {
         margin-left: 33px;
         margin-top: 4px;
     }
+
     .example.example-2 .brand-img.discover {
         margin-top: 9px;
     }
+
     .example.example-2 .field.newPayment {
         margin-bottom: 50px;
     }
@@ -667,6 +697,7 @@ LOADER
     .example.example-2 .brand-img.mastercard {
         margin-right: 40px;
     }
+
     .example.example-2 .field.newPayment {
         margin-bottom: 70px;
     }

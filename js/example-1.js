@@ -9,7 +9,7 @@ const fieldsExample1 = dlocalInstance.fields({
 var example1 = document.querySelector(".example-1");
 var form1 = example1.querySelector('form');
 var error1 = form1.querySelector('.error');
-var errorMessage5 = error1.querySelector('.message');
+var errorMessage1 = error1.querySelector('.message');
 
 const panExample1 = fieldsExample1.create('pan', {
     style: {
@@ -40,12 +40,12 @@ panExample1.on('brand', function (event) {
 
         dlocalInstance.createInstallmentsPlan(panExample1, 20, "BRL")
             .then((result) => {
-                var installmentsSelect5 = form1.querySelector('.installments');
-                buildInstallments(installmentsSelect5, result.installments);
+                var installmentsSelect1 = form1.querySelector('.installments');
+                buildInstallments(installmentsSelect1, result.installments);
             }).catch((result) => {
                 console.error(result);
                 error1.classList.add('visible');
-                errorMessage5.innerText = result.error.message;
+                errorMessage1.innerText = result.error.message;
             });
     }
 });
@@ -106,38 +106,34 @@ document.getElementById('fields-form-example-1').onsubmit = function (e) {
         triggerBrowserValidation(form1);
         return;
     }
-    if (!areExample1FieldsCompleated) {
-        if (!errorMessage5.innerText) {
-            error1.classList.add('visible');
-            errorMessage5.innerText = 'Complete credit card data.';
-        }
 
+    if (errorMessage1.innerText) {
         return;
     }
+
     // Show a loading screen...
     example1.classList.add('submitting');
     dlocalInstance.createToken(cvvExample1, {
         name: document.getElementById('example-1-name').value
     }).then((result) => {
         error1.classList.remove('visible');
-        errorMessage5.innerText = "";
+        errorMessage1.innerText = "";
         example1.classList.remove('submitting');
         example1.querySelector(".token").innerText = result.token;
         example1.classList.add("submitted");
     }).catch((result) => {
         example1.classList.remove('submitting');
         error1.classList.add('visible');
-        errorMessage5.innerText = result.error.message;
+        errorMessage1.innerText = result.error.message;
     });
 
 }
-let areExample1FieldsCompleated = false;
-registerClearBtn("example-1", [panExample1, expirationExample1, cvvExample1], function () {
-    actualBrandExample1 = null;
-})
-registerEvents("example-1", [panExample1, expirationExample1, cvvExample1], ["example-1-pan", "example-1-expiration", "example-1-cvv"], function (compleated) {
-    areExample1FieldsCompleated = compleated;
-})
+
+
+registerClearBtn("example-1", [panExample1, expirationExample1, cvvExample1])
+registerEvents("example-1", [panExample1, expirationExample1, cvvExample1])
+
+
 
 panExample1.mount(document.getElementById('example-1-pan'));
 expirationExample1.mount(document.getElementById('example-1-expiration'));
