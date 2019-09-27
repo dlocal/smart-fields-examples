@@ -24,6 +24,7 @@ function registerClearBtn(exampleName, fields, onClear) {
     var error = form.querySelector('.error');
 
     resetButton.addEventListener('click', function (e) {
+        debugger
         e.preventDefault();
         // Resetting the form (instead of setting the value to `''` for each input)
         // helps us clear webkit autofill styles.
@@ -52,7 +53,7 @@ function registerClearBtn(exampleName, fields, onClear) {
 
 }
 
-function registerEvents(exampleName, fields, fieldsNames, onCompleatedChange) {
+function registerEvents(exampleName, fields, fieldsNames) {
     var formClass = '.' + exampleName;
     var example = document.querySelector(formClass);
 
@@ -65,7 +66,6 @@ function registerEvents(exampleName, fields, fieldsNames, onCompleatedChange) {
 
     // Listen for errors from each Smart-Field, and show error messages in the UI.
     var savedErrors = {};
-    var fieldsCompleated = new Array(fields.lenght).fill(false);
     var fieldsReady = new Array(fields.lenght).fill(false);
     fields.forEach(function (field, idx) {
         field.on('change', function (event) {
@@ -86,12 +86,6 @@ function registerEvents(exampleName, fields, fieldsNames, onCompleatedChange) {
             } else {
                 document.getElementById(fieldsNames[idx]).classList.remove("autofilled");
             }
-        })
-
-        field.on('complete', function (event) {
-            fieldsCompleated[idx] = event.complete;
-            fields[idx + 1] ? fields[idx + 1].focus() : null;
-            onCompleatedChange(allFieldsTrue(fieldsCompleated));
         })
 
         field.on('ready', function (event) {
