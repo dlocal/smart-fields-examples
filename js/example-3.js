@@ -118,7 +118,7 @@ document.getElementById('fields-form-example-3').onsubmit = function (e) {
 }
 
 registerClearBtn("example-3", [panExample3, expirationExample3, cvvExample3])
-registerEvents("example-3", [panExample3, expirationExample3, cvvExample3])
+registerEvents("example-3", [panExample3, expirationExample3, cvvExample3], ["example-4-pan", "example-4-expiration", "example-4-cvv"])
 
 panExample3.mount(document.getElementById('example-3-pan'));
 expirationExample3.mount(document.getElementById('example-3-expiration'));
