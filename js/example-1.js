@@ -131,7 +131,7 @@ document.getElementById('fields-form-example-1').onsubmit = function (e) {
 
 
 registerClearBtn("example-1", [panExample1, expirationExample1, cvvExample1])
-registerEvents("example-1", [panExample1, expirationExample1, cvvExample1])
+registerEvents("example-1", [panExample1, expirationExample1, cvvExample1], ["example-1-pan", "example-1-expiration", "example-1-cvv"])
 
 
 
