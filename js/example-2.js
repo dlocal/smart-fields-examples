@@ -105,21 +105,20 @@ const panField = fieldsExample2.create('pan', {
             lineHeight: '30px',
             fontSmoothing: 'antialiased',
             fontWeight: '500',
+            iconColor: "#fff",
             '::placeholder': {
-                color: "#B8BBC0"
-            },
-            iconColor: "#adbfd3",
-            '::placeholder': {
-                color: "#adbfd3"
+                color: "#fff"
             }
         },
         focus: {
+            iconColor: "#adbfd3",
             '::placeholder': {
                 color: "#adbfd3"
             }
         }
     },
-    placeholder: "4111 1111 1111 1111"
+    placeholder: "4111 1111 1111 1111",
+    hideIcon: true
 });
 
 const cvvField = fieldsExample2.create('cvv', {
@@ -217,13 +216,8 @@ function clickCVV() {
 let isPanEmpty = true;
 let panHasError = false;
 panField.on('blur', function (event) {
-    if (event.empty) {
-        isPanEmpty = true;
-        document.getElementById('panOverlay').style.visibility = "visible"
-    } else {
-        isPanEmpty = false;
-    }
 
+    isPanEmpty = event.empty;
     if (event.error) {
         panHasError = true;
         document.getElementById('fieldPanContainer').classList.add("Field--required");
@@ -277,16 +271,15 @@ cvvField.on('blur', function (event) {
 
 // onFocus
 
-panField.on('focus', function (event) {
+panField.on('focus', function () {
     document.getElementById('containerPan').classList.add("focus");
-    document.getElementById('panOverlay').style.visibility = "hidden"
 })
 
-expirationField.on('focus', function (event) {
+expirationField.on('focus', function () {
     document.getElementById('containerExpiration').classList.add("focus");
 })
 
-cvvField.on('focus', function (event) {
+cvvField.on('focus', function () {
     document.getElementById('containerCVV').classList.add("focus");
 })
 
@@ -429,7 +422,6 @@ function loader(show) {
     document.getElementById("loader-example-2").style.visibility = show ? "visible" : "hidden";
     document.getElementById("customContainer").style.visibility = show ? "hidden" : "visible";
     document.getElementById("customContainer").style.opacity = show ? 0 : 1;
-    document.getElementById("panOverlay").style.visibility = show ? "hidden" : "visible";
 }
 
 
