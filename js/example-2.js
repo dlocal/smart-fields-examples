@@ -83,7 +83,7 @@ function submit() {
     }
     loader(true)
     dlocalInstance.createToken(panField, {
-            Name: name.value
+            name: name.value
         }).then((result) => {
             loader(false)
             var example = document.querySelector(".example-2");
